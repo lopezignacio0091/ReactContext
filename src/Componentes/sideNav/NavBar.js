@@ -24,13 +24,16 @@ import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import SettingsApplicationsRoundedIcon from '@material-ui/icons/SettingsApplicationsRounded';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import { Link } from 'react-router-dom';
-
+import imageFondo from '../../Img/navsLateral.jpg'
+import blueGrey from '@material-ui/core/colors/blueGrey';
+import lightBlue from '@material-ui/core/colors/lightBlue';
+import grey from '@material-ui/core/colors/grey';
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
-    margin:theme.spacing(5)
+    margin: theme.spacing(5)
   },
   margin: {
     margin: theme.spacing(1),
@@ -59,8 +62,15 @@ const useStyles = makeStyles((theme) => ({
     width: drawerWidth,
     flexShrink: 0,
   },
+  links:{
+    color:grey[50]
+  },
+
   drawerPaper: {
     width: drawerWidth,
+    // backgroundImage:'url('+imageFondo+')',
+    backgroundColor:lightBlue[900],
+    color:grey[50]
   },
   drawerHeader: {
     display: 'flex',
@@ -91,7 +101,7 @@ const useStyles = makeStyles((theme) => ({
 export default function PersistentDrawerLeft() {
 
   const loginContext = useContext(LoginContext);
-    const { usuarioLogueado,logueado,logout} = loginContext;
+  const { usuarioLogueado, logueado, logout } = loginContext;
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
@@ -105,7 +115,7 @@ export default function PersistentDrawerLeft() {
   };
   const handleDrawerCloseSesion = () => {
     logout();
-    
+
   };
 
   return (
@@ -113,13 +123,14 @@ export default function PersistentDrawerLeft() {
       <CssBaseline />
       <AppBar
         position="fixed"
+        
         className={clsx(classes.appBar, {
           [classes.appBarShift]: open,
         })}
       >
         <Toolbar>
           <IconButton
-            color="secondary"
+            color={blueGrey[800]}
             aria-label="open drawer"
             onClick={handleDrawerOpen}
             edge="start"
@@ -128,10 +139,10 @@ export default function PersistentDrawerLeft() {
             <MenuIcon />
           </IconButton>
           <Typography variant="h4" noWrap>
-          
-              EMAPJ ONLINE <ComputerIcon />{' '}  
+            EMAPJ ONLINE <ComputerIcon />{' '}
           </Typography>
-        </Toolbar>
+        </Toolbar> 
+      
       </AppBar>
       <Drawer
         className={classes.drawer}
@@ -143,68 +154,77 @@ export default function PersistentDrawerLeft() {
         }}
       >
         <div className={classes.drawerHeader}>
-        {(logueado==true)?<Typography variant="h7" noWrap>
-        <AccountCircle />Bienvenido{' '}  
-        {usuarioLogueado.nombre} </Typography>:<span></span> 
-     }
+          {(logueado == true) ? <Typography variant="h7" noWrap>
+            <AccountCircle />Bienvenido{' '}
+            {usuarioLogueado.nombre} </Typography> : <span></span>
+          }
           <IconButton onClick={handleDrawerClose}>
-            {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
+            {theme.direction === 'ltr' ? <ChevronLeftIcon className={classes.links}  /> : <ChevronRightIcon  className={classes.links}/>}
           </IconButton>
         </div>
         <Divider />
         <List>
-          <Link to='/'>
-            <ListItem button onClick={handleDrawerClose}>    
-                <ListItemIcon> 
-                    <HomeRoundedIcon /> 
-                </ListItemIcon>
-                <ListItemText primary='Home'/>
+          <Link className={classes.links} to='/'>
+            <ListItem button onClick={handleDrawerClose}>
+              <ListItemIcon>
+                <HomeRoundedIcon className={classes.links} />
+              </ListItemIcon>
+              <ListItemText primary='Home' />
             </ListItem>
           </Link>
-          <Link to='/card'>
-            <ListItem button onClick={handleDrawerClose}>              
-                <ListItemIcon> 
-                    <AssignmentIndRoundedIcon /> 
-                </ListItemIcon>
-                <ListItemText primary='Nuestros Productos'/>
+          <Link  className={classes.links} to='/card'>
+            <ListItem button onClick={handleDrawerClose}>
+              <ListItemIcon>
+                <AssignmentIndRoundedIcon className={classes.links}/>
+              </ListItemIcon>
+              <ListItemText primary='Nuestros Productos' />
             </ListItem>
           </Link>
-          {(logueado)?
-          <Link to='/carrito'>
-            <ListItem button onClick={handleDrawerClose}>              
-                <ListItemIcon> 
-                    <ShoppingCartIcon /> 
+          {(logueado) ?
+            <Link  className={classes.links} to='/carrito'>
+              <ListItem button onClick={handleDrawerClose}>
+                < ListItemIcon>
+                  <ShoppingCartIcon className={classes.links} />
                 </ListItemIcon>
-                <ListItemText primary='Carrito'/>
-            </ListItem>
-          </Link>:<span></span>}
-          {(logueado)?
-          <Link to='/Contacto'>
-            <ListItem  button onClick={handleDrawerClose}>
-                <ListItemIcon> 
-                    <ComputerIcon /> 
+                <ListItemText primary='Carrito' />
+              </ListItem>
+            </Link> : <span></span>}
+          {(logueado) ?
+            <Link className={classes.links} to='/Contacto'>
+              <ListItem button onClick={handleDrawerClose}>
+                <ListItemIcon>
+                  <ComputerIcon className={classes.links} />
                 </ListItemIcon>
-                <ListItemText primary='Contacto'/> 
-            </ListItem> 
-          </Link>:<span></span>}
+                <ListItemText primary='Contacto' />
+              </ListItem>
+            </Link> : <span></span>}
+          {(usuarioLogueado.esAdmin == true) ?
+            <Link  className={classes.links} to='/admin'>
+              <ListItem button onClick={handleDrawerClose}>
+                <ListItemIcon>
+                  <ShoppingCartIcon  className={classes.links}/>
+                </ListItemIcon>
+                <ListItemText primary='Admin' />
+              </ListItem>
+            </Link> : <span></span>}
         </List>
         <Divider />
         <List>
-          {(logueado==false)?<Link to='/Login'>
+          {(logueado == false) ? <Link className={classes.links} to='/Login'>
             <ListItem button onClick={handleDrawerClose}>
-                <ListItemIcon> 
-                    <AccountCircle /> 
-                </ListItemIcon>
-                <ListItemText primary='Login'/>
+              <ListItemIcon>
+                <AccountCircle className={classes.links} />
+              </ListItemIcon>
+              <ListItemText primary='Login' />
             </ListItem>
-          </Link>:<Link to='/Login'>
-            <ListItem button onClick={handleDrawerCloseSesion}>
-                <ListItemIcon> 
-                    <AccountCircle /> 
+          </Link> : <Link className={classes.links} to='/Login'>
+              <ListItem button onClick={handleDrawerCloseSesion}>
+                <ListItemIcon>
+                  <AccountCircle className={classes.links} />
                 </ListItemIcon>
-                <ListItemText primary='Cerrar Sesion'/>
-            </ListItem>
-          </Link>}
+                <ListItemText primary='Cerrar Sesion' />
+              </ListItem>
+            </Link>}
         </List>
       </Drawer>
     </div>
