@@ -3,6 +3,7 @@ import clsx from 'clsx';
 import { useContext, useEffect } from 'react';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import LoginContext from '../../Context/Login/LoginContext'
+import ModalSesion  from '../modals/ModalConfirmacion'
 import Drawer from '@material-ui/core/Drawer';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import AppBar from '@material-ui/core/AppBar';
@@ -22,12 +23,14 @@ import AssignmentIndRoundedIcon from '@material-ui/icons/AssignmentIndRounded';
 import ComputerIcon from '@material-ui/icons/Computer';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import SettingsApplicationsRoundedIcon from '@material-ui/icons/SettingsApplicationsRounded';
+import BuildIcon from '@material-ui/icons/Build';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import { Link } from 'react-router-dom';
 import imageFondo from '../../Img/navsLateral.jpg'
 import blueGrey from '@material-ui/core/colors/blueGrey';
 import lightBlue from '@material-ui/core/colors/lightBlue';
 import grey from '@material-ui/core/colors/grey';
+import indigo from '@material-ui/core/colors/indigo';
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
@@ -63,14 +66,14 @@ const useStyles = makeStyles((theme) => ({
     flexShrink: 0,
   },
   links:{
-    color:grey[50]
+    color:indigo[500]
   },
 
   drawerPaper: {
     width: drawerWidth,
     // backgroundImage:'url('+imageFondo+')',
-    backgroundColor:lightBlue[900],
-    color:grey[50]
+    backgroundColor:blueGrey[50],
+    color:indigo[500]
   },
   drawerHeader: {
     display: 'flex',
@@ -115,7 +118,6 @@ export default function PersistentDrawerLeft() {
   };
   const handleDrawerCloseSesion = () => {
     logout();
-
   };
 
   return (
@@ -130,7 +132,6 @@ export default function PersistentDrawerLeft() {
       >
         <Toolbar>
           <IconButton
-            color={blueGrey[800]}
             aria-label="open drawer"
             onClick={handleDrawerOpen}
             edge="start"
@@ -202,7 +203,7 @@ export default function PersistentDrawerLeft() {
             <Link  className={classes.links} to='/admin'>
               <ListItem button onClick={handleDrawerClose}>
                 <ListItemIcon>
-                  <ShoppingCartIcon  className={classes.links}/>
+                  <BuildIcon  className={classes.links}/>
                 </ListItemIcon>
                 <ListItemText primary='Admin' />
               </ListItem>
@@ -217,7 +218,7 @@ export default function PersistentDrawerLeft() {
               </ListItemIcon>
               <ListItemText primary='Login' />
             </ListItem>
-          </Link> : <Link className={classes.links} to='/Login'>
+          </Link> : <Link className={classes.links}>
               <ListItem button onClick={handleDrawerCloseSesion}>
                 <ListItemIcon>
                   <AccountCircle className={classes.links} />
