@@ -32,7 +32,6 @@ const useStyles = makeStyles((theme) => ({
   heading: {
     fontSize: theme.typography.pxToRem(15),
     fontWeight: theme.typography.fontWeightRegular,
-
   },
 }));
 
@@ -60,7 +59,6 @@ export default function SimpleAccordion() {
             <Grid item xs={6}>
               <Typography className={classes.heading}>Nombre:{' '}{itemCO.Nombre}</Typography>
             </Grid>
-
             <Grid item xs={6}>
               <Button variant="contained" color="secondary" size="small" onClick={() => deleteProduct(itemCO)}>
                 Eliminar

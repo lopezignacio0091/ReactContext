@@ -1,5 +1,4 @@
 import React from 'react';
-import { useContext } from 'react';
 import HeaderCarrito from './carritoHeader/CarritoHeader'
 import BodyCarrito from './carritoBody/CarritoBody'
 import TotalCarrito from './carritoTotal/CarritoTotal'
@@ -11,7 +10,6 @@ const useStyles = makeStyles((theme) => ({
     header: {
         color: indigo[500],
     },
-
 }));
 
 const Home = () => {

@@ -12,7 +12,8 @@ import {
     ADD_CANTIDAD,
     REMOVE_CANTIDAD,
     SET_CARRITO_TOTAL,
-    SET_CARRITO_DELETE
+    SET_CARRITO_DELETE,
+    SET_ITEM_CARRITO
 
 } from '../types/types'
 
@@ -36,15 +37,36 @@ const CarritoState = props => {
     const postItemCarrito = (item) => {
         setTotal(item);
         const carrito = [];
-        carrito.push(item);
-        dispatch({
-            type: SET_CARRITO,
-            payload: carrito
-        })
+        if (validandoItemCarrito(item)) {
+            carrito.push(item);
+            dispatch({
+                type: SET_CARRITO,
+                payload: carrito
+            })
+        }else{
+            dispatch({
+                type: SET_ITEM_CARRITO,
+                payload: state.carrito
+            })
+        }
+
     }
 
+    const validandoItemCarrito = (item) => {
+        let value = true;
+        state.carrito.forEach(element => {
+            if (element.Id == item.Id) {
+                element.Cantidad = element.Cantidad + item.Cantidad;
+                value= false;
+            }
+        });
+        return value;
+    }
+
+
     const setTotal = (item) => {
-        let sumando = state.total + item.Precio;
+        let precioCantidad = item.Cantidad * item.Precio;
+        let sumando = state.total + precioCantidad;
         dispatch({
             type: SET_CARRITO_TOTAL,
             payload: sumando
@@ -73,13 +95,14 @@ const CarritoState = props => {
         })
     }
 
-   const restarTotal = (item)=>{
-    let restando = state.total - item.Precio;
+    const restarTotal = (item) => {
+        let precioCantidad = item.Cantidad * item.Precio;
+        let restando = state.total - precioCantidad;
         dispatch({
             type: SET_CARRITO_TOTAL,
             payload: restando
         })
-   }
+    }
 
 
     return (

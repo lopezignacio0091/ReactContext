@@ -5,7 +5,8 @@ import {
     ADD_CANTIDAD,
     REMOVE_CANTIDAD,
     SET_CARRITO_TOTAL,
-    SET_CARRITO_DELETE
+    SET_CARRITO_DELETE,
+    SET_ITEM_CARRITO
 } from '../types/types'
 
 export default (state, action) => {
@@ -21,6 +22,12 @@ export default (state, action) => {
                 carrito: state.carrito.concat(action.payload),
                 messageAddCarrito: true,
             }
+            case SET_ITEM_CARRITO:
+                return {
+                    ...state,
+                    carrito: action.payload,
+                    messageAddCarrito: true,
+                }
         case CLOSE_MESSAGE_CARRITO:
             return {
                 ...state,

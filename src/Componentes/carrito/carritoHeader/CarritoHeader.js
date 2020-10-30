@@ -6,8 +6,7 @@ const carrito = require("../../../Img/carritoCompra.png");
  const useStyles = makeStyles((theme) => ({
         header: {
             color: indigo[500],
-        },
-    
+       },    
     }));
 const HeaderCarrito = () => {
     const classes = useStyles();
