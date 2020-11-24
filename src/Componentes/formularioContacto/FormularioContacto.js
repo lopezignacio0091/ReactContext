@@ -17,7 +17,9 @@ import Footer from '../home/FooterHome/FooterHome'
 import FooterPagos from '../home/FooterEnvio/FooterEnvio'
 import indigo from '@material-ui/core/colors/indigo';
 import grey from '@material-ui/core/colors/grey';
+import Error from '../Error/Error'
 const carrito = require("../../Img/contacto.png");
+
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -66,8 +68,13 @@ const FormularioContacto = () => {
     const contactoContext = useContext(ContactoContext);
     const {MensajeContacto,setMensaje, postContacto, ContactoCreado, EmailValido ,getUsuario,Nombre,Email} = contactoContext;
     const loginContext = useContext(LoginContext);
-    const {usuarioLogueado} = loginContext;
-
+    const {usuarioLogueado,logueado} = loginContext;
+    
+    if(!logueado){
+        return (
+            <Error/>
+        )
+    }
 
 
     const classes = useStyles();

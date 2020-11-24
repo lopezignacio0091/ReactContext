@@ -15,3 +15,17 @@
     min-height: 1px;
     padding: 0.2rem;
 }
+
+.headerAdmin{
+  background-image: url(./Img/adminHeader.png);
+}
+
+.navBack{
+  background-image: url(./Img/navImg.jpg);
+}
+.labelsFilter{
+  color:rgb(63,81,181);
+}
+.MuiIconButton-edgeStart .MuiSvgIcon-root {
+  color:white;
+}

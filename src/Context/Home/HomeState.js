@@ -12,7 +12,8 @@ import {
     SET_FILTER_PRODUCT,
     GET_IMAGEN_FILTER,
     GET_COLUMN_PRODUCTO,
-    SET_SELECT_FILTER_PRODUCTO
+    SET_SELECT_FILTER_PRODUCTO,
+    GET_DATE_GRAFICOS
 } from '../types/types'
 
 
@@ -27,6 +28,8 @@ const HomeState = props => {
         filtroProducto:'',
         ColumProducto:[],
         selectFilter:'Seleccione Producto',
+        listProductLabel : [],
+        listProductDate : [],
 
     }
 
@@ -61,6 +64,7 @@ const HomeState = props => {
       .then(res => res.json())
       .then(
         (result) => {
+             DataGraficos(result);
             const objItemHome = [];
             for (let x = 0; x < result.length; x++) {
                 const element = result[x];
@@ -82,7 +86,22 @@ const HomeState = props => {
             });
         })
     }
+ 
+    const DataGraficos =(item)=>{
+      const objItemLabel = [];
+      const objItemDate = [];
 
+      for (let x = 0; x < item.length; x++) {
+        const element = item[x];
+         objItemLabel.push(element.producto.nombre);
+         objItemDate.push(element.producto.stock);
+    }
+      dispatch({
+        type: GET_DATE_GRAFICOS,
+        payload: {objItemLabel,objItemDate}
+    });
+
+    }
     const armandoOptionProduct = (columna) => {
         const item = { key:"Seleccione Producto", text:"Seleccione Producto" }
         const Columa = [item];
@@ -189,6 +208,8 @@ const HomeState = props => {
                 filtroProducto:state.filtroProducto,
                 ColumProducto:state.ColumProducto,
                 selectFilter:state.selectFilter,
+                listProductLabel:state.listProductLabel,
+                listProductDate:state.listProductDate,
                 setProductFilter,
                 addCantidad,
                 removeCantidad,

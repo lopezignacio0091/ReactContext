@@ -5,7 +5,8 @@ import {
     SET_FILTER_PRODUCT,
     GET_IMAGEN_FILTER,
     GET_COLUMN_PRODUCTO,
-    SET_SELECT_FILTER_PRODUCTO
+    SET_SELECT_FILTER_PRODUCTO,
+    GET_DATE_GRAFICOS,
 } from '../types/types'
 
 export default (state, action) => {
@@ -50,6 +51,12 @@ export default (state, action) => {
                 ...state,
                 selectFilter: action.payload
             }
+            case GET_DATE_GRAFICOS:
+                return {
+                    ...state,
+                    listProductLabel:action.payload.objItemLabel,
+                    listProductDate:action.payload.objItemDate
+                }
             
 
 

@@ -104,6 +104,31 @@ const CarritoState = props => {
         })
     }
 
+    const checkLogoutCarrito=(usuarioId)=>{
+        if(state.carrito.length>0){
+            createCarritoUser(usuarioId);
+        }
+    }
+
+    const createCarritoUser=(usuarioId)=>{
+            setLoading()
+            const requestOptions = {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    ListProducto:state.carrito,
+                    idUser:usuarioId
+                })
+            };
+            fetch('https://localhost:44380/api/Carrito/', requestOptions)
+                .then(response => response.json())
+                .catch(error => console.error('Error:', error))
+                .then(response => console.log('Success:', response));
+                dispatch({
+                    type: SET_CARRITO_DELETE,
+                    payload: {}
+                })
+        }
 
     return (
         <CarritoContext.Provider
@@ -116,7 +141,8 @@ const CarritoState = props => {
                 postItemCarrito,
                 deleteProduct,
                 setLoading,
-                handleCloseMessage
+                handleCloseMessage,
+                checkLogoutCarrito
             }}>
             {props.children}
         </CarritoContext.Provider>

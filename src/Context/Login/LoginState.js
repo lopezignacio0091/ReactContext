@@ -12,7 +12,8 @@ import {
     SET_EMAIL_LOGIN,
     GET_USER_LOGUEADO,
     MSG_ERROR_VALIDATED,
-    CLOSE_SESION
+    CLOSE_SESION,
+    CLEAN_INPUTS
 } from '../types/types'
 
 
@@ -90,6 +91,14 @@ const LoginState = props => {
 
   
   
+const cleanComponentes= () => {
+  dispatch({
+      type: CLEAN_INPUTS,
+      
+  });
+}
+
+
 
   const logout= () => {
     dispatch({
@@ -116,7 +125,8 @@ const LoginState = props => {
                 getUsuario,
                 setEmail,
                 handleChange,
-                logout
+                logout,
+                cleanComponentes
             }}>
             {props.children}
         </LoginContext.Provider>

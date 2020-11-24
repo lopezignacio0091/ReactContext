@@ -30,7 +30,6 @@ const useStyles = makeStyles((theme) => ({
     root: {
         maxWidth: 545,
         left: 750,
-
     },
     expand: {
         transform: 'rotate(0deg)',
@@ -71,14 +70,18 @@ const useStyles = makeStyles((theme) => ({
         padding: theme.spacing(3),
         fontSize:16
     }
-
 }));
 
 const FormularioContacto = () => {
 
     const loginContext = useContext(LoginContext);
-    const { loading, showPassword,logueado, handleClickShowPassword, handleMouseDownPassword, handleChange, password, setEmail, usuarioLogueado,getUsuario, errorUsuario, email } = loginContext;
+    const { loading, showPassword,logueado, handleClickShowPassword, handleMouseDownPassword, handleChange, password, setEmail, usuarioLogueado,getUsuario, errorUsuario, email,cleanComponentes } = loginContext;
     const classes = useStyles();
+
+    useEffect(() => {
+        cleanComponentes();
+    
+      }, [])
 
     if(logueado){
        return (

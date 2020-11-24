@@ -5,7 +5,8 @@ import {
     SET_EMAIL_LOGIN,
     GET_USER_LOGUEADO,
     MSG_ERROR_VALIDATED,
-    CLOSE_SESION
+    CLOSE_SESION,
+    CLEAN_INPUTS
 } from '../types/types'
 
 export default (state, action) => {
@@ -49,5 +50,12 @@ export default (state, action) => {
                             errorUsuario:false,
                             logueado:false,
                         }
+                        case CLEAN_INPUTS:
+                            return {
+                                ...state,
+                                email:'',
+                                password:'',
+                               
+                            }
     }
 }

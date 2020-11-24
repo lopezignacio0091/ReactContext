@@ -79,8 +79,6 @@ const postUsuario = () => {
             Email: state.email,
             EsAdmin: false,
             Password:state.password,
-
-
         })
     };
     fetch('https://localhost:44380/api/Usuario/', requestOptions)

@@ -11,6 +11,8 @@ import Carrito from './Componentes/carrito/Home'
 import Contacto from './Componentes/formularioContacto/FormularioContacto'
 import Login from  './Componentes/login/Login'
 import Create from './Componentes/create/Create'
+import Admin from './Componentes/admin/Home'
+import ModalSesion from './Componentes/modals/ModalConfirmacion'
 import PersistentDrawerLeft from './Componentes/sideNav/NavBar';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
@@ -32,6 +34,8 @@ function App() {
                   <Route path='/Contacto' component={Contacto} />
                   <Route path='/carrito' component={Carrito} />
                   <Route path='/create' component={Create} />
+                  <Route path='/admin' component={Admin} />
+                  <Route path='/logout' component={ModalSesion} />
                 </Switch>
               </div>
             </HashRouter>

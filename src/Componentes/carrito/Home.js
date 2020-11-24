@@ -1,6 +1,9 @@
 import React from 'react';
+import { useContext ,useEffect} from 'react';
+import LoginContext from '../../Context/Login/LoginContext'
 import HeaderCarrito from './carritoHeader/CarritoHeader'
 import BodyCarrito from './carritoBody/CarritoBody'
+import Error from '../Error/Error'
 import TotalCarrito from './carritoTotal/CarritoTotal'
 import { makeStyles } from '@material-ui/core/styles';
 import indigo from '@material-ui/core/colors/indigo';
@@ -12,8 +15,17 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
+
+
 const Home = () => {
+    const loginContext = useContext(LoginContext);
+    const { logueado } = loginContext;
     const classes = useStyles();
+    if(!logueado){
+        return (
+            <Error/>
+        )
+    }
     return (
 
         <>

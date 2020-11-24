@@ -25,6 +25,7 @@ import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
 import MessageCarrito from './messageCarrito/messageCarrito'
 import AddIcon from '@material-ui/icons/Add';
 import RemoveIcon from '@material-ui/icons/Remove';
+import indigo from '@material-ui/core/colors/indigo';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -86,6 +87,7 @@ const CardProducto = () => {
                   classes={textCardContentStyles}
                   overline={'EMAPJ ONLINE'}
                   heading={elem.Nombre}
+                 
                   body={
                     elem.Descripcion
                   }
