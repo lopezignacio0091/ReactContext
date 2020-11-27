@@ -23,7 +23,7 @@ const data = [
   {
     id: 2,
     title: 'EMAPJ ONLINE',
-    subtitle: 'Venta Online',
+    subtitle: 'Acercate a conocernos',
     image:
       // eslint-disable-next-line max-len
       '../Descuento.png',

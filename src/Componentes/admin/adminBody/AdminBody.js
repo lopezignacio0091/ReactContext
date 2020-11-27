@@ -4,6 +4,7 @@ import Grafico from '../Grafico/Grafico'
 import Porcentaje from '../Grafico/Porcentaje'
 
 
+
 const bodyAdmin = () => {
 
     return (
@@ -15,6 +16,7 @@ const bodyAdmin = () => {
                 <div className="col-md-4 col-sm-12">
                     <Porcentaje />
                 </div>
+               
         </>
     );
 };

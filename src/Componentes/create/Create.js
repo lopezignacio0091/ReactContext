@@ -28,10 +28,9 @@ import Message from '../CreateMessage/CreateMessage'
 
 
 const useStyles = makeStyles((theme) => ({
-    root: {
+    rootCreate: {
         maxWidth: 545,
         left: 750,
-
     },
     expand: {
         transform: 'rotate(0deg)',
@@ -95,10 +94,11 @@ if(usuarioCreate){
     )
 }
     return (
-        <div className="text-center mt-5 ml-5" >
+        <div className="crearCuenta text-center mt-3 ml-5" >
             <Card className={classes.root}
                 justify="center"
-                alignItems="center">
+                alignItems="center"
+                >
                 <Paper className={classes.header}><h2>
                     Crear Cuenta</h2><br>
                     </br><h6 className="text-black">EMPAJ ONLINE{' '}<ComputerIcon /></h6></Paper>

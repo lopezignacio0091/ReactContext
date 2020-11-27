@@ -29,3 +29,22 @@
 .MuiIconButton-edgeStart .MuiSvgIcon-root {
   color:white;
 }
+
+
+@keyframes slidein {
+  from {
+    margin-top:-500px;
+    width:500%
+  }
+  
+  to {
+   margin-left:0%;
+   width:100%;
+ }
+}
+.makeStyles-root-13{
+  animation-duration: 3s;
+  animation-name: slidein;
+  animation-direction: alternate !important;  
+ }
+ 
