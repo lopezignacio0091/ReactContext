@@ -14,13 +14,14 @@ import Create from './Componentes/create/Create'
 import Admin from './Componentes/admin/Home'
 import ModalSesion from './Componentes/modals/ModalConfirmacion'
 import PersistentDrawerLeft from './Componentes/sideNav/NavBar';
+import Mensaje from './Componentes/admin/Mensaje/Mensaje'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 function App() {
 
   return (
     <LoginState>
-      <CreateState>
+    <CreateState>
       <HomeState>
         <CarritoState>
           <ContactoState>
@@ -36,6 +37,7 @@ function App() {
                   <Route path='/create' component={Create} />
                   <Route path='/admin' component={Admin} />
                   <Route path='/logout' component={ModalSesion} />
+                  <Route path='/mensaje' component={Mensaje} />
                 </Switch>
               </div>
             </HashRouter>

@@ -1,10 +1,8 @@
 import React from 'react';
 import { useReducer } from 'react';
 
-
 import ContactoContext from './ContactoContext';
 import ContactoReducer from './ContactoReducer';
-
 import {
     SET_LOADING,
     POST_CONTACTO,
@@ -14,7 +12,8 @@ import {
     MSG_ERROR_VALIDATED,
     CLEAN_INPUTS,
     EMAIL_INVALIDO,
-    SET_USUARIO_LOGUEADO
+    SET_USUARIO_LOGUEADO,
+    GET_MENSAJES
 } from '../types/types'
 
 
@@ -29,7 +28,11 @@ const HomeState = props => {
         msgError:false,
         ContactoCreado:false,
         EmailValido:false,
-        ContactoId :0
+        ContactoId :0,
+        columna:[],
+        mensaje:[],
+        options:{}
+
 
     }
 
@@ -133,6 +136,37 @@ const HomeState = props => {
 
     }
 
+    const getMensajes =()=>{
+        setLoading();
+        fetch("https://localhost:44380/api/Contacto/")
+        .then(res => res.json())
+        .then(
+          (result) => {
+              const objItemHome = [];
+              for (let x = 0; x < result.length; x++) {
+                const element = result[x];
+                const item = {};
+                item.Id=element.contactoId,
+                item.Nombre=element.nombre,
+                item.Email=element.email,
+                item.Mensaje=element.mensaje
+                objItemHome.push(item);
+              }
+              const columns = ["Id", "Nombre", "Email", "Mensaje"];
+              const options = {
+                filterType: 'checkbox',
+              };
+              dispatch({
+                  type: GET_MENSAJES,
+                  payload: {objItemHome,columns,options}
+              });
+          })
+    }
+
+    
+
+  
+
     return (
         <ContactoContext.Provider
             value={{
@@ -144,13 +178,17 @@ const HomeState = props => {
                 MensajeContacto: state.MensajeContacto,
                 ContactoCreado:state.ContactoCreado,
                 EmailValido:state.EmailValido,
+                columna:state.columna,
+                mensaje:state.mensaje,
+                options:state.options,
                 cleanInputs,
                 setLoading,
                 postContacto,
                 getUsuario,
                 setNombre,
                 setEmail,
-                setMensaje
+                setMensaje,
+                getMensajes
             }}>
             {props.children}
         </ContactoContext.Provider>

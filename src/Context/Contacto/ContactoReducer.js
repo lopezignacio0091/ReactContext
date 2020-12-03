@@ -7,7 +7,8 @@ import {
     MSG_ERROR_VALIDATED,
     CLEAN_INPUTS,
     EMAIL_INVALIDO,
-    SET_USUARIO_LOGUEADO
+    SET_USUARIO_LOGUEADO,
+    GET_MENSAJES
 
 } from '../types/types'
 
@@ -71,6 +72,15 @@ export default (state, action) => {
                             Email:action.payload.email,
                             Nombre:action.payload.nombre
                         } 
+                        case GET_MENSAJES:
+                        return {
+                            ...state,
+                            mensaje:action.payload.objItemHome,
+                            columna:action.payload.columns,
+                            options:action.payload.options,
+                            loading: false,
+                        } 
+    
     
 
 
