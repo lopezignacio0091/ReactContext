@@ -25,7 +25,6 @@ export default (state, action) => {
             case SET_ITEM_CARRITO:
                 return {
                     ...state,
-                    carrito: action.payload,
                     messageAddCarrito: true,
                 }
         case CLOSE_MESSAGE_CARRITO:

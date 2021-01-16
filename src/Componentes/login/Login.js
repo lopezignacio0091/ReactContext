@@ -23,7 +23,8 @@ import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
 import IconButton from '@material-ui/core/IconButton';
 import FormHelperText from '@material-ui/core/FormHelperText';
-import Message from '../CreateMessage/CreateMessage'
+import Message from '../Message/LoginMessage'
+import CircularProgress from '@material-ui/core/CircularProgress';
 import { IoMdContact } from "react-icons/io";
 
 const useStyles = makeStyles((theme) => ({
@@ -72,7 +73,7 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-const FormularioContacto = () => {
+const Login = () => {
 
     const loginContext = useContext(LoginContext);
     const { loading, showPassword,logueado, handleClickShowPassword, handleMouseDownPassword, handleChange, password, setEmail, usuarioLogueado,getUsuario, errorUsuario, email,cleanComponentes } = loginContext;
@@ -143,7 +144,10 @@ const FormularioContacto = () => {
                         justify="center"
                         alignItems="center"
                     >
-                         <a className={classes.linkCuenta} href="#/create"><IoMdContact/>{' '}Crear Cuenta</a>
+                         {(!loading)? <a className={classes.linkCuenta} href="#/create"><IoMdContact/>{' '}Crear Cuenta</a>
+                     :<CircularProgress color="secondary" />
+                     }
+                        
                     </Grid>
                 <Divider variant="middle" />
                 <CardActions disableSpacing
@@ -173,4 +177,4 @@ const FormularioContacto = () => {
         </div>
     )
 }
-export default FormularioContacto
+export default Login

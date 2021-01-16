@@ -37,11 +37,13 @@ export default (state, action) => {
                     usuarioLogueado: action.payload,
                     errorUsuario:false,
                     logueado:true,
+                    loading: false,
                 }
                 case MSG_ERROR_VALIDATED:
                     return {
                         ...state,
-                        errorUsuario:true
+                        errorUsuario:true,
+                        loading: false
                     }
                     case CLOSE_SESION:
                         return {

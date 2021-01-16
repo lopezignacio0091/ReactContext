@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 import Button from '@material-ui/core/Button';
 import indigo from '@material-ui/core/colors/indigo';
 import { VscMail } from "react-icons/vsc";
-// const carrito = require("../../../Img/carritoCompra.png");
  const useStyles = makeStyles((theme) => ({
         header: {
             color: indigo[100],
@@ -31,10 +30,9 @@ const HeaderAdmin = () => {
                             /> */}</h1>
                         </div>
                         <div className="col-md-2 col-sm-2 text-white">
-                        <Button variant="contained"  to='/mensaje'>
-                        <Link > </Link><VscMail/>{' '} Mensajes
-                             </Button> 
-                            
+                        <a  className="btn btn-secondary" variant="contained"  href='#/mensaje'>
+                      <VscMail/>{' '} Mensajes
+                             </a>  
                         </div>
                     </div>
                 </div>

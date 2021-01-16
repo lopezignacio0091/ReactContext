@@ -1,6 +1,7 @@
 import React from 'react';
 import { useContext } from 'react';
 import CarritoContext from '../../../Context/Carrito/CarritoContext'
+import LoginContext from '../../../Context/Login/LoginContext'
 import { makeStyles } from '@material-ui/core/styles';
 import Accordion from '@material-ui/core/Accordion';
 import AccordionSummary from '@material-ui/core/AccordionSummary';
@@ -36,10 +37,12 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function SimpleAccordion() {
+  const loginContext = useContext(LoginContext);
+  const { usuarioLogueado } = loginContext
   const carritoContext = useContext(CarritoContext);
-  const { carrito, deleteProduct } = carritoContext
+  const {deleteProduct } = carritoContext
   const classes = useStyles();
-  if (carrito.length == 0) {
+  if (usuarioLogueado.carrito.listaCarritoProductos == 0) {
     return (
       <>
         <MessageItems />
@@ -48,7 +51,7 @@ export default function SimpleAccordion() {
   }
   return (
     <div >
-      {carrito.map(itemCO => (
+      {usuarioLogueado.carrito.listaCarritoProductos.map(itemCO => (
         <Accordion >
           <AccordionSummary
             expandIcon={<ExpandMoreIcon />}
@@ -57,7 +60,7 @@ export default function SimpleAccordion() {
             className={classes.root}
           >
             <Grid item xs={6}>
-              <Typography className={classes.heading}>Nombre:{' '}{itemCO.Nombre}</Typography>
+              <Typography className={classes.heading}>Nombre:{' '}{itemCO.producto.nombre}</Typography>
             </Grid>
             <Grid item xs={6}>
               <Button variant="contained" color="secondary" size="small" onClick={() => deleteProduct(itemCO)}>
@@ -67,10 +70,10 @@ export default function SimpleAccordion() {
           </AccordionSummary>
           <AccordionDetails className={classes.content}>
             <Grid item xs={6}>
-              <Typography><IoIosCalendar /> {' '}Fecha:{itemCO.Fecha} </Typography>
+              <Typography><IoIosCalendar /> {' '}Precio:{itemCO.precio} </Typography>
             </Grid>
             <Grid item xs={6}>
-              <Typography className={classes.heading}>Cantidad:{' '}{itemCO.Cantidad}</Typography>
+              <Typography className={classes.heading}>Cantidad:{' '}{itemCO.cantidad}</Typography>
             </Grid>
           </AccordionDetails>
         </Accordion>

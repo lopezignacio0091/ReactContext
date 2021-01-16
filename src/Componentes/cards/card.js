@@ -25,7 +25,7 @@ import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
 import MessageCarrito from './messageCarrito/messageCarrito'
 import AddIcon from '@material-ui/icons/Add';
 import RemoveIcon from '@material-ui/icons/Remove';
-import indigo from '@material-ui/core/colors/indigo';
+
 
 
 const useStyles = makeStyles((theme) => ({
@@ -50,9 +50,9 @@ const CardProducto = () => {
   const loginContext = useContext(LoginContext);
   const homeContext = useContext(HomeContext);
   const carritoContext = useContext(CarritoContext);
-  const { loading, listaImagenes,getImagen,addCantidad,removeCantidad } = homeContext;
-  const { postItemCarrito} = carritoContext
-  const {logueado}=loginContext
+  const { loading, listaImagenes,getProductos,addCantidad,removeCantidad } = homeContext;
+  const { agregarProductoCarrito,messageAddCarrito} = carritoContext
+  const {logueado,usuarioLogueado}=loginContext
   const classes = useStyles();
   const styles = useStyles();
   const mediaStyles = useFourThreeCardMediaStyles();
@@ -61,7 +61,7 @@ const CardProducto = () => {
 
 
   useEffect(() => {
-    getImagen();
+    getProductos();
 
   }, [])
 
@@ -87,7 +87,6 @@ const CardProducto = () => {
                   classes={textCardContentStyles}
                   overline={'EMAPJ ONLINE'}
                   heading={elem.Nombre}
-                 
                   body={
                     elem.Descripcion
                   }
@@ -120,9 +119,6 @@ const CardProducto = () => {
                     >
                     </Button>
                   </Grid>
-                  {/* <Grid item xs={3}>
-                   
-                  </Grid> */}
                   <Grid item xs={4}>
                     <TextField
                       disabled
@@ -139,7 +135,7 @@ const CardProducto = () => {
                       size="small"
                       startIcon={<AddShoppingCartIcon />}
                       disabled={elem.Cantidad == 0}
-                      onClick={() =>postItemCarrito(elem)}
+                      onClick={() =>agregarProductoCarrito(elem,usuarioLogueado)}
                     >
                       Agregar al Carrito
                           </Button>

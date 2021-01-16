@@ -13,7 +13,8 @@ import {
     GET_IMAGEN_FILTER,
     GET_COLUMN_PRODUCTO,
     SET_SELECT_FILTER_PRODUCTO,
-    GET_DATE_GRAFICOS
+    GET_DATE_GRAFICOS,
+    SET_CANTIDAD_PRODUCTO
 } from '../types/types'
 
 
@@ -30,6 +31,7 @@ const HomeState = props => {
         selectFilter:'Seleccione Producto',
         listProductLabel : [],
         listProductDate : [],
+        cantidad : 0,
 
     }
 
@@ -37,19 +39,25 @@ const HomeState = props => {
     const setLoading = () => dispatch({ type: SET_LOADING });
 
     const getProductos = () => {
+      setLoading()
         fetch("https://localhost:44380/api/Producto/")
       .then(res => res.json())
       .then(
         (result) => {
+          DataGraficos(result);
             const objItemHome = [];
             for (let x = 0; x < result.length; x++) {
               const element = result[x];
               const item = {};
-              item.Nombre = element.Nombre;
+              item.Nombre = element.nombre;
               item.Id = element.productoId;
               item.Precio = element.precio;
               item.Stock = element.stock;
+              item.Descripcion = element.descripcion;
+              item.ImagenUrl  = element.imagen.imagenUrl;
+              item.Cantidad =0;
               objItemHome.push(item);
+              armandoOptionProduct(objItemHome);
             }
             dispatch({
                 type: GET_PRODUCTOS,
@@ -58,34 +66,34 @@ const HomeState = props => {
         })
     }
 
-    const getImagen = () => {
-      setLoading()
-        fetch("https://localhost:44380/api/Imagen/")
-      .then(res => res.json())
-      .then(
-        (result) => {
-             DataGraficos(result);
-            const objItemHome = [];
-            for (let x = 0; x < result.length; x++) {
-                const element = result[x];
-                const item = {};
-                item.Nombre = element.producto.nombre;
-                item.Id = element.productoId;
-                item.Precio = element.producto.precio;
-                item.Stock = element.producto.stock;
-                item.Descripcion = element.producto.descripcion;
-                item.ImagenUrl  = element.imagenUrl;
-                item.Cantidad =0;
-                item.Fecha=moment().format('LL');  ;
-                objItemHome.push(item);
-            }
-            armandoOptionProduct(objItemHome);
-            dispatch({
-                type: GET_IMAGEN,
-                payload: objItemHome
-            });
-        })
-    }
+    // const getImagen = () => {
+    //   setLoading()
+    //     fetch("https://localhost:44380/api/Imagen/")
+    //   .then(res => res.json())
+    //   .then(
+    //     (result) => {
+    //          DataGraficos(result);
+    //         const objItemHome = [];
+    //         for (let x = 0; x < result.length; x++) {
+    //             const element = result[x];
+    //             const item = {};
+    //             item.Nombre = element.producto.nombre;
+    //             item.Id = element.productoId;
+    //             item.Precio = element.producto.precio;
+    //             item.Stock = element.producto.stock;
+    //             item.Descripcion = element.producto.descripcion;
+    //             item.ImagenUrl  = element.imagenUrl;
+    //             item.Cantidad =0;
+    //             item.Fecha=moment().format('LL');  ;
+    //             objItemHome.push(item);
+    //         }
+    //         armandoOptionProduct(objItemHome);
+    //         dispatch({
+    //             type: GET_IMAGEN,
+    //             payload: objItemHome
+    //         });
+    //     })
+    // }
  
     const DataGraficos =(item)=>{
       const objItemLabel = [];
@@ -93,8 +101,8 @@ const HomeState = props => {
 
       for (let x = 0; x < item.length; x++) {
         const element = item[x];
-         objItemLabel.push(element.producto.nombre);
-         objItemDate.push(element.producto.stock);
+         objItemLabel.push(element.nombre);
+         objItemDate.push(element.stock);
     }
       dispatch({
         type: GET_DATE_GRAFICOS,
@@ -168,31 +176,30 @@ const HomeState = props => {
       const getAllProductos = () => {
         dispatch({
           type: GET_PRODUCTOS,
-          payload: state.copiaListaProductos
+          payload: state.copiaListaImagenes
         })
       }
 
       const addCantidad =(idItem)=>{
-        filtrandoItem(idItem,'suma')
+      filtrandoItem(idItem,'suma')
     }
 
     const removeCantidad =(idItem)=>{
       filtrandoItem(idItem,'resta')
     }
 
-    const filtrandoItem = (idItem,cantidad)=>{
+    const filtrandoItem = (idItem,tipo)=>{
 
     for(let x=0 ;x<state.listaImagenes.length;x++){
         const elem = state.listaImagenes[x]; 
 
         if(elem.Id == idItem){
-          elem.Cantidad=(cantidad == "suma")? elem.Cantidad + 1: elem.Cantidad - 1;
+          elem.Cantidad=(tipo == "suma")? elem.Cantidad + 1: elem.Cantidad - 1;
           elem.Cantidad =(elem.Cantidad <0)?0:elem.Cantidad;
-          elem.Fecha = moment().format('LL');  
         }  
     }
       dispatch({
-        type: GET_IMAGEN,
+        type: GET_PRODUCTOS,
         payload: state.listaImagenes
     });
 
@@ -210,6 +217,7 @@ const HomeState = props => {
                 selectFilter:state.selectFilter,
                 listProductLabel:state.listProductLabel,
                 listProductDate:state.listProductDate,
+                cantidad:state.cantidad,
                 setProductFilter,
                 addCantidad,
                 removeCantidad,
@@ -217,7 +225,7 @@ const HomeState = props => {
                 setSelectFilter,
                 getProductos,
                 setLoading,
-                getImagen
+               
             }}>
             {props.children}
         </HomeContext.Provider>

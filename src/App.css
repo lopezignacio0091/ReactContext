@@ -31,7 +31,7 @@
 }
 
 
-@keyframes slidein {
+/* @keyframes slidein {
   from {
     margin-top:-500px;
     width:500%
@@ -47,4 +47,4 @@
   animation-name: slidein;
   animation-direction: alternate !important;  
  }
- 
+  */

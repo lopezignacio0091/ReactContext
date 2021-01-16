@@ -1,6 +1,7 @@
 import React from "react";
 import { useContext } from 'react';
 import CarritoContext from '../../../Context/Carrito/CarritoContext'
+import LoginContext from '../../../Context/Login/LoginContext'
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import indigo from '@material-ui/core/colors/indigo';
@@ -28,6 +29,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const HeaderCarrito = () => {
+    const loginContext = useContext(LoginContext);
+     const { usuarioLogueado } = loginContext
     const carritoContext = useContext(CarritoContext);
     const { total } = carritoContext
     const classes = useStyles();
@@ -46,7 +49,7 @@ const HeaderCarrito = () => {
                         <h6>Total: </h6>
                     </Grid>
                     <Grid item xs={6} className={classes.subtotal} spacing={1}>
-                        <h6>{total} </h6>
+                        <h6>{usuarioLogueado.carrito.total} </h6>
                     </Grid>
                 </Grid>
                 <Grid container >

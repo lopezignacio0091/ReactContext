@@ -67,9 +67,11 @@ const CreateState = props => {
           });
       }
 
+
+     
       
 const postUsuario = () => {
-    setLoading()
+    
     const requestOptions = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -84,11 +86,28 @@ const postUsuario = () => {
     fetch('https://localhost:44380/api/Usuario/', requestOptions)
         .then(response => response.json())
         .catch(error => console.error('Error:', error))
-        .then(response => console.log('Success:', response));
-    dispatch({
-        type: POST_USUARIO,
-    })
+        .then(response =>  createCarritoUsuario(response));
+    
 
+}
+
+const createCarritoUsuario=(usuarioId)=>{
+    setLoading()
+    const requestOptions = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            UsuarioId:usuarioId.id
+        })
+    };
+    fetch('https://localhost:44380/api/Carrito/', requestOptions)
+        .then(response => response.json())
+        .catch(error => console.error('Error:', error))
+        .then(response => console.log('Succes:',response));
+
+        dispatch({
+            type: POST_USUARIO,
+        })
 }
 
 const handleMouseDownPassword = () => {

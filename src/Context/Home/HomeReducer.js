@@ -7,6 +7,7 @@ import {
     GET_COLUMN_PRODUCTO,
     SET_SELECT_FILTER_PRODUCTO,
     GET_DATE_GRAFICOS,
+    SET_CANTIDAD_PRODUCTO
 } from '../types/types'
 
 export default (state, action) => {
@@ -17,13 +18,6 @@ export default (state, action) => {
                 loading: true
             }
         case GET_PRODUCTOS:
-            return {
-                ...state,
-                loading: false,
-                listaProductos: action.payload,
-                copiaListaProductos: action.payload
-            }
-        case GET_IMAGEN:
             return {
                 ...state,
                 loading: false,
@@ -57,9 +51,12 @@ export default (state, action) => {
                     listProductLabel:action.payload.objItemLabel,
                     listProductDate:action.payload.objItemDate
                 }
-            
-
-
+                case SET_CANTIDAD_PRODUCTO:
+                    return {
+                        ...state,
+                        cantidad : action.payload
+                    }
+                
 
     }
 }

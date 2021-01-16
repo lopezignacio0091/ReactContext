@@ -21,10 +21,10 @@ const Home = () => {
     const { logueado } = loginContext; 
     const classes = useStyles();
     const homeContext = useContext(HomeContext);
-    const { loading,getImagen } = homeContext;
+    const { loading,getProductos } = homeContext;
 
     useEffect(() => {
-        getImagen();
+        getProductos();
       }, [])
 
     if(loading){

@@ -19,8 +19,14 @@ const useStyles = makeStyles((theme) => ({
 
 const Home = () => {
     const loginContext = useContext(LoginContext);
-    const { logueado } = loginContext;
+    const { logueado ,getUsuario} = loginContext;
     const classes = useStyles();
+
+    useEffect(() => {
+        getUsuario()
+      }, [])
+
+
     if(!logueado){
         return (
             <Error/>

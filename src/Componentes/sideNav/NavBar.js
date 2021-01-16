@@ -121,7 +121,6 @@ export default function PersistentDrawerLeft() {
   };
   const handleDrawerCloseSesion = () => {
     logout();
-    checkLogoutCarrito(usuarioLogueado.usuarioId)
   };
 
   return (

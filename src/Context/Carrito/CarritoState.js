@@ -26,6 +26,7 @@ const CarritoState = props => {
         messageAddCarrito: false,
         cantidad: 0,
         total: 0,
+
     }
 
     const [state, dispatch] = useReducer(CarritoReducer, initialState);
@@ -34,21 +35,8 @@ const CarritoState = props => {
             { type: SET_LOADING }
         );
 
-    const postItemCarrito = (item) => {
-        setTotal(item);
-        const carrito = [];
-        if (validandoItemCarrito(item)) {
-            carrito.push(item);
-            dispatch({
-                type: SET_CARRITO,
-                payload: carrito
-            })
-        }else{
-            dispatch({
-                type: SET_ITEM_CARRITO,
-                payload: state.carrito
-            })
-        }
+    const postItemCarrito = (item,carritoNuevo) => {
+        agregarProductoCarrito(item,carritoNuevo)
 
     }
 
@@ -64,14 +52,6 @@ const CarritoState = props => {
     }
 
 
-    const setTotal = (item) => {
-        let precioCantidad = item.Cantidad * item.Precio;
-        let sumando = state.total + precioCantidad;
-        dispatch({
-            type: SET_CARRITO_TOTAL,
-            payload: sumando
-        })
-    }
     const handleCloseMessage = () => {
         dispatch({
             type: CLOSE_MESSAGE_CARRITO,
@@ -110,24 +90,21 @@ const CarritoState = props => {
         }
     }
 
-    const createCarritoUser=(usuarioId)=>{
+        const agregarProductoCarrito=(producto,carrito)=>{
             setLoading()
             const requestOptions = {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
-                    ListProducto:state.carrito,
-                    idUser:usuarioId
+                    Cantidad:producto.Cantidad,
+                    ProductoId: producto.Id,
+                    CarritoId: carrito.carrito.carritoId,
                 })
             };
-            fetch('https://localhost:44380/api/Carrito/', requestOptions)
+            fetch('https://localhost:44380/api/CarritoProducto/', requestOptions)
                 .then(response => response.json())
                 .catch(error => console.error('Error:', error))
-                .then(response => console.log('Success:', response));
-                dispatch({
-                    type: SET_CARRITO_DELETE,
-                    payload: {}
-                })
+                .then(response => dispatch({type: SET_ITEM_CARRITO,}));    
         }
 
     return (
@@ -142,7 +119,8 @@ const CarritoState = props => {
                 deleteProduct,
                 setLoading,
                 handleCloseMessage,
-                checkLogoutCarrito
+                checkLogoutCarrito,
+                agregarProductoCarrito
             }}>
             {props.children}
         </CarritoContext.Provider>

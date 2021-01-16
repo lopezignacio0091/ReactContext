@@ -10,7 +10,7 @@ const useStyles = makeStyles((theme) => ({
 
 }));
 
-const SuccessMessage = (props) => {
+const CreateMessage = (props) => {
     const classes = useStyles();
     const {Nombre} = props
     
@@ -23,9 +23,9 @@ const SuccessMessage = (props) => {
             </div>
             <div className='card-body'>
                 <p>
-                     Gracias por Volver a elegirnos.. 
+                     Su cuenta fue creado con Exito, Por favor logueate para disfrutar de nuestros productos.  
                 </p>
-               <p className='msjSuccess'><BsFillHouseDoorFill></BsFillHouseDoorFill>{' '} <a href="#/">Home </a> 
+               <p className='msjSuccess'><BsFillHouseDoorFill></BsFillHouseDoorFill>{' '} <a href="/login">Home </a> 
                 </p>
             </div>
             </div>
@@ -34,4 +34,4 @@ const SuccessMessage = (props) => {
        
     )
 }
-export default SuccessMessage;
+export default CreateMessage;

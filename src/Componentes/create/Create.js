@@ -24,11 +24,11 @@ import VisibilityOff from '@material-ui/icons/VisibilityOff';
 import IconButton from '@material-ui/core/IconButton';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import Progress from '../progress/Progress'
-import Message from '../CreateMessage/CreateMessage'
+import Message from '../Message/CreateMessage'
 
 
 const useStyles = makeStyles((theme) => ({
-    rootCreate: {
+    root: {
         maxWidth: 545,
         left: 750,
     },
@@ -71,30 +71,26 @@ const useStyles = makeStyles((theme) => ({
         padding: theme.spacing(3),
         fontSize:16
     }
-
 }));
 
-const FormularioContacto = () => {
 
+const Create = () => {
     const createContext = useContext(CreateContext);
     const { loading,usuarioCreate ,errorUsuario,showPassword, handleClickShowPassword,getUsuarioByEmail, handleMouseDownPassword, setPassword,setNombre,setApellido,nombre,apellido, password, setEmail, email } = createContext;
     const classes = useStyles();
-
     if(loading){
 
         return(
             <Progress/>
         )
     }
-
-
 if(usuarioCreate){
     return (
             <Message Nombre={nombre}/>
     )
 }
     return (
-        <div className="crearCuenta text-center mt-3 ml-5" >
+        <div className="text-center mt-3 ml-5" >
             <Card className={classes.root}
                 justify="center"
                 alignItems="center"
@@ -163,7 +159,7 @@ if(usuarioCreate){
                         <FormHelperText id="standard-weight-helper-text">Password</FormHelperText>
                     </FormControl>
                     {(errorUsuario) &&
-                        <Alert severity="error">El usuario ya existe por favor verifique lo mismo <a href="#/login">Aqui</a></Alert>
+                        <Alert severity="error">El usuario ya existe por favor verifique lo mismo<a href="#/login">Aqui</a></Alert>
                     }
                 </CardContent>
                 <Divider variant="middle" />
@@ -184,7 +180,7 @@ if(usuarioCreate){
                         justify="center"
                         alignItems="center"
                     >
-                        <Button variant="contained" color="secondary" to='/'>
+                        <Button variant="contained" color="secondary" to='#/'>
                             <Link ></Link>
                                 Cancelar
                              </Button>
@@ -194,4 +190,4 @@ if(usuarioCreate){
         </div>
     )
 }
-export default FormularioContacto
+export default Create
