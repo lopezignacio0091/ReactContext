@@ -32,7 +32,7 @@ const HeaderCarrito = () => {
     const loginContext = useContext(LoginContext);
      const { usuarioLogueado } = loginContext
     const carritoContext = useContext(CarritoContext);
-    const { total } = carritoContext
+    const { total ,comprar} = carritoContext
     const classes = useStyles();
     return (
 
@@ -43,7 +43,7 @@ const HeaderCarrito = () => {
                         <h6>Total: </h6>
                     </Grid>
                     <Grid item xs={6} className={classes.total} spacing={1}>
-                        <h6>{total} </h6>
+                        <h6>{usuarioLogueado.carrito.total}</h6>
                     </Grid>
                     <Grid item xs={6} className={classes.subtotal} spacing={1}>
                         <h6>Total: </h6>
@@ -55,7 +55,7 @@ const HeaderCarrito = () => {
                 <Grid container >
                     <Grid item xs={12} spacing={1}></Grid>
                     <Grid item xs={12} className={classes.footer} spacing={1}>
-                        <h5>Comprar</h5>
+                        <Button variant="contained" color="primary" onClick={() => comprar(usuarioLogueado.id)}><h5>Comprar</h5></Button>
                     </Grid>
 
                 </Grid>

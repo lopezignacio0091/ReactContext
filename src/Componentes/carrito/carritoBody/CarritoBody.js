@@ -42,7 +42,7 @@ export default function SimpleAccordion() {
   const carritoContext = useContext(CarritoContext);
   const {deleteProduct } = carritoContext
   const classes = useStyles();
-  if (usuarioLogueado.carrito.listaCarritoProductos == 0) {
+  if (!usuarioLogueado.carrito.listaCarritoProductos) {
     return (
       <>
         <MessageItems />

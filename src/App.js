@@ -15,6 +15,7 @@ import Admin from './Componentes/admin/Home'
 import ModalSesion from './Componentes/modals/ModalConfirmacion'
 import PersistentDrawerLeft from './Componentes/sideNav/NavBar';
 import Mensaje from './Componentes/admin/Mensaje/Mensaje'
+import Recovery from './Componentes/recoveryPassword/RecoveryPassword'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 function App() {
@@ -38,6 +39,7 @@ function App() {
                   <Route path='/admin' component={Admin} />
                   <Route path='/logout' component={ModalSesion} />
                   <Route path='/mensaje' component={Mensaje} />
+                  <Route path="/recovery" component={Recovery}/>
                 </Switch>
               </div>
             </HashRouter>

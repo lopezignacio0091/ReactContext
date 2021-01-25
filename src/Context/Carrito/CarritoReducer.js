@@ -6,7 +6,9 @@ import {
     REMOVE_CANTIDAD,
     SET_CARRITO_TOTAL,
     SET_CARRITO_DELETE,
-    SET_ITEM_CARRITO
+    SET_ITEM_CARRITO,
+    MSG_COMPRA,
+    CLEAR_STAGE
 } from '../types/types'
 
 export default (state, action) => {
@@ -36,6 +38,16 @@ export default (state, action) => {
             return {
                 ...state,
                 cantidad: +1,
+            }
+            case MSG_COMPRA:
+            return {
+                ...state,
+                compraOk:true,
+            }
+            case CLEAR_STAGE:
+            return {
+                ...state,
+                compraOk:false,
             }
         case REMOVE_CANTIDAD:
             return {

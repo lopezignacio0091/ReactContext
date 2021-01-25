@@ -6,7 +6,10 @@ import {
     GET_USER_LOGUEADO,
     MSG_ERROR_VALIDATED,
     CLOSE_SESION,
-    CLEAN_INPUTS
+    CLEAN_INPUTS,
+    SET_PASSWORD_RECOVERY,
+    CLEAN_ERROR,
+    SET_VIEW_PASSWORD_REPEAT
 } from '../types/types'
 
 export default (state, action) => {
@@ -21,10 +24,20 @@ export default (state, action) => {
                     ...state,
                     showPassword: action.payload
                 }
+                case SET_VIEW_PASSWORD_REPEAT:
+                return {
+                    ...state,
+                    showPasswordRepeat: action.payload
+                }
                 case SET_PASSWORD_LOGIN:
                 return {
                     ...state,
                     password: action.payload
+                }
+                case SET_PASSWORD_RECOVERY:
+                return {
+                    ...state,
+                    passwordRepeat: action.payload
                 }
                 case SET_EMAIL_LOGIN:
                 return {
@@ -45,12 +58,19 @@ export default (state, action) => {
                         errorUsuario:true,
                         loading: false
                     }
+                    case CLEAN_ERROR:
+                        return {
+                            ...state,
+                            errorUsuario:false,
+                        }
                     case CLOSE_SESION:
                         return {
                             ...state,
                             usuarioLogueado:{},
                             errorUsuario:false,
                             logueado:false,
+                            password:"",
+                            email:""
                         }
                         case CLEAN_INPUTS:
                             return {

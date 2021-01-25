@@ -1,10 +1,13 @@
 import React from 'react';
 import { useContext ,useEffect} from 'react';
 import LoginContext from '../../Context/Login/LoginContext'
+import CarritoContext from '../../Context/Carrito/CarritoContext'
 import HeaderCarrito from './carritoHeader/CarritoHeader'
 import BodyCarrito from './carritoBody/CarritoBody'
 import Error from '../Error/Error'
+import Progress from '../progress/Progress'
 import TotalCarrito from './carritoTotal/CarritoTotal'
+import CompraOk from '../Message/CompraOk'
 import { makeStyles } from '@material-ui/core/styles';
 import indigo from '@material-ui/core/colors/indigo';
 
@@ -19,7 +22,9 @@ const useStyles = makeStyles((theme) => ({
 
 const Home = () => {
     const loginContext = useContext(LoginContext);
-    const { logueado ,getUsuario} = loginContext;
+    const { logueado ,getUsuario,loading,usuarioLogueado} = loginContext;
+    const carritoContext = useContext(CarritoContext);
+    const { compraOk} = carritoContext;
     const classes = useStyles();
 
     useEffect(() => {
@@ -30,6 +35,17 @@ const Home = () => {
     if(!logueado){
         return (
             <Error/>
+        )
+    }
+    if(loading){
+        return (
+            <Progress/>
+        )
+    }
+
+    if(compraOk){
+        return(
+            <CompraOk Nombre={usuarioLogueado.nombre}/>
         )
     }
     return (

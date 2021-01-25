@@ -7,13 +7,12 @@ import CarritoReducer from './CarritoReducer';
 
 import {
     SET_LOADING,
-    SET_CARRITO,
     CLOSE_MESSAGE_CARRITO,
-    ADD_CANTIDAD,
-    REMOVE_CANTIDAD,
     SET_CARRITO_TOTAL,
     SET_CARRITO_DELETE,
-    SET_ITEM_CARRITO
+    SET_ITEM_CARRITO,
+    MSG_COMPRA,
+    CLEAR_STAGE
 
 } from '../types/types'
 
@@ -26,6 +25,7 @@ const CarritoState = props => {
         messageAddCarrito: false,
         cantidad: 0,
         total: 0,
+        compraOk:false,
 
     }
 
@@ -107,6 +107,31 @@ const CarritoState = props => {
                 .then(response => dispatch({type: SET_ITEM_CARRITO,}));    
         }
 
+
+        const comprar =(idUsuario)=>{
+            setLoading()
+            const requestOptions = {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    UsuarioId:idUsuario
+                })
+            };
+            fetch('https://localhost:44380/api/Compras/', requestOptions)
+                .then(response => response.json())
+                .catch(error => console.error('Error:', error))
+                .then(response =>
+                dispatch({
+                    type: MSG_COMPRA,
+                }));    
+        }
+   
+        const limpiarState=()=>{
+            dispatch({
+                type: CLEAR_STAGE,
+            })
+        }
+
     return (
         <CarritoContext.Provider
             value={{
@@ -115,12 +140,15 @@ const CarritoState = props => {
                 messageAddCarrito: state.messageAddCarrito,
                 cantidad: state.cantidad,
                 total: state.total,
+                compraOk:state.compraOk,
                 postItemCarrito,
                 deleteProduct,
                 setLoading,
                 handleCloseMessage,
                 checkLogoutCarrito,
-                agregarProductoCarrito
+                agregarProductoCarrito,
+                comprar,
+                limpiarState
             }}>
             {props.children}
         </CarritoContext.Provider>

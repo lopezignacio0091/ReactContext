@@ -27,7 +27,6 @@ import Message from '../Message/LoginMessage'
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { IoMdContact } from "react-icons/io";
 
-
 const useStyles = makeStyles((theme) => ({
     root: {
         maxWidth: 545,
@@ -74,15 +73,19 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-const Login = () => {
+const Recovery = () => {
 
     const loginContext = useContext(LoginContext);
-    const { loading, showPassword,logueado, handleClickShowPassword, handleMouseDownPassword, handleChange, password, setEmail, usuarioLogueado,getUsuario, errorUsuario, email,cleanComponentes } = loginContext;
+    const {loading,cleanError, passwordRepeat,
+        setPasswordRepeat,showPassword,showPasswordRepeat,logueado,recoveryPassword, 
+        handleClickShowPassword,ClickShowPasswordRepeat,
+        MouseDownPasswordRepeat, 
+        handleMouseDownPassword, handleChange, password, setEmail, 
+        usuarioLogueado, errorUsuario, email} = loginContext;
     const classes = useStyles();
 
     useEffect(() => {
-        cleanComponentes();
-    
+        cleanError() 
       }, [])
 
     if(logueado){
@@ -97,19 +100,21 @@ const Login = () => {
                 justify="center"
                 alignItems="center">
                 <Paper className={classes.header}><h2>
-                    Bienvenido</h2><br>
+                    Recuperacion Contraseña</h2><br>
                     </br><h6 className="text-black">EMPAJ ONLINE{' '}<ComputerIcon /></h6></Paper>
                 <Divider variant="middle" />
                 <CardContent>
                     <FormControl className={clsx(classes.margin, classes.withoutLabel, classes.textField)}>
                         <Input
                             required
+                            disabled
                             onChange={setEmail('email')}
                             endAdornment={<InputAdornment position="end">Email</InputAdornment>}
                             aria-describedby="standard-weight-helper-text"
                             inputProps={{
                                 'aria-label': 'weight',
                             }}
+                            value={email}
                         />
                         <FormHelperText id="standard-weight-helper-text">Email</FormHelperText>
                     </FormControl>
@@ -119,7 +124,6 @@ const Login = () => {
                             required
                             id="standard-adornment-password"
                             type={showPassword ? 'text' : 'password'}
-                            value={password}
                             onChange={handleChange('password')}
                             endAdornment={
                                 <InputAdornment position="end">
@@ -135,10 +139,29 @@ const Login = () => {
                         />
                         <FormHelperText id="standard-weight-helper-text">Contraseña</FormHelperText>
                     </FormControl>
+                    <FormControl className={clsx(classes.margin, classes.textField)}>
+                        <InputLabel htmlFor="standard-adornment-password">Repetir Contraseña</InputLabel>
+                        <Input
+                            required
+                            id="standard-adornment-password"
+                            type={showPasswordRepeat ? 'text' : 'password'}
+                            onChange={setPasswordRepeat('passwordRepeat')}
+                            endAdornment={
+                                <InputAdornment position="end">
+                                    <IconButton
+                                        aria-label="toggle password visibility"
+                                        onClick={ClickShowPasswordRepeat}
+                                        onMouseDown={MouseDownPasswordRepeat}
+                                    >
+                                        {showPasswordRepeat ? <Visibility /> : <VisibilityOff />}
+                                    </IconButton>
+                                </InputAdornment>
+                            }
+                        />
+                        <FormHelperText id="standard-weight-helper-text">Repetir Contraseña</FormHelperText>
+                    </FormControl>
                     {(errorUsuario) &&
-                        <Alert severity="error">Password o Email invalido <a className={classes.linkCuenta} href="#/recovery">Recuparar Contraseña</a></Alert> 
-                        
-                        
+                        <Alert severity="error">Las contraseñas no coinciden</Alert>
                     }
                 </CardContent>
                 <Divider variant="middle" />
@@ -161,7 +184,7 @@ const Login = () => {
                         justify="center"
                         alignItems="center"
                     >
-                        <Button variant="contained" color="primary" onClick={() => getUsuario()} disabled={(!email || !password)}>
+                        <Button variant="contained" color="primary" onClick={() => recoveryPassword()} disabled={(!password || !passwordRepeat)}>
                             Aceptar
                          </Button>
                     </Grid>
@@ -180,4 +203,4 @@ const Login = () => {
         </div>
     )
 }
-export default Login
+export default Recovery
