@@ -16,7 +16,7 @@ export default function LinearIndeterminate() {
 
   return (
     <><br/>
-      <div className="container-fluid mt-2">
+      <div className="container-fluid cardPrincipal">
         <div className="card">
           <div className="card-body">
           <LinearProgress color="secondary" /> 

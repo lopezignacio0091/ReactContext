@@ -28,7 +28,6 @@ function App() {
           <ContactoState>
             <HashRouter>
               <PersistentDrawerLeft />
-              <div className='container pt-3 mt-3 bg-light'>
                 <Switch>
                   <Route exact={true} path='/' component={Home} />
                   <Route path='/login' component={Login}/>
@@ -41,7 +40,6 @@ function App() {
                   <Route path='/mensaje' component={Mensaje} />
                   <Route path="/recovery" component={Recovery}/>
                 </Switch>
-              </div>
             </HashRouter>
           </ContactoState>
         </CarritoState>

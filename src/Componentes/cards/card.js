@@ -71,7 +71,7 @@ const CardProducto = () => {
     )
   }
   return (
-    <>
+    <div className="container cardPrincipal">
       <Filter></Filter>
       <div className="row">
         {listaImagenes.map((elem, index) => (
@@ -152,7 +152,7 @@ const CardProducto = () => {
         <FooterEnvio></FooterEnvio>
         <Footer></Footer>
       </div>
-    </>
+    </div>
   );
 }
 

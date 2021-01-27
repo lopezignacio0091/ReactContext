@@ -37,7 +37,6 @@ const drawerWidth = 240;
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
-    margin: theme.spacing(5)
   },
   margin: {
     margin: theme.spacing(1),
@@ -184,7 +183,7 @@ export default function PersistentDrawerLeft() {
               <ListItemText primary='Nuestros Productos' />
             </ListItem>
           </Link>
-          {(logueado) ?
+          {(logueado && usuarioLogueado.esAdmin==false) ?
             <Link  className={classes.links} to='/carrito'>
               <ListItem button onClick={handleDrawerClose}>
                 < ListItemIcon>

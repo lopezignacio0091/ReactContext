@@ -12,26 +12,27 @@ const useStyles = makeStyles((theme) => ({
 
 const SuccessMessage = (props) => {
     const classes = useStyles();
-    const {Nombre} = props
-    
-    return(
-        <div className='container mt-2'> 
-            <br/>
+    const { Nombre } = props
+
+    return (
+        <div className='container cardPrincipal'>
+            <br />
             <div className='card'>
-            <div className='card-header'>
-              <h3 className={classes.header}>Bienvenid@ - {Nombre}</h3>
-            </div>
-            <div className='card-body'>
-                <p>
-                     Gracias por volver a elegirnos ... 
+                <div className='card-header'>
+                    <h3 className={classes.header}>Bienvenid@ - {Nombre}</h3>
+                </div>
+                <div className='card-body'>
+                    <p>
+                        Gracias por volver a elegirnos ...
                 </p>
-               <p className='msjSuccess'><BsFillHouseDoorFill></BsFillHouseDoorFill>{' '} <a href="#/">Home </a> 
-                </p>
+                    <p className='msjSuccess'><BsFillHouseDoorFill></BsFillHouseDoorFill>{' '} <a href="#/">Home </a>
+                    </p>
+                </div>
             </div>
-            </div>
-            <br/>
+
+            <br />
         </div>
-       
+
     )
 }
 export default SuccessMessage;

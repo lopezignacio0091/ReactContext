@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import Divider from '@material-ui/core/Divider';
+import Container from '@material-ui/core/Container';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
@@ -27,37 +28,37 @@ import Message from '../Message/LoginMessage'
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { IoMdContact } from "react-icons/io";
 
+const centered = {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center'
+};
 
 const useStyles = makeStyles((theme) => ({
     root: {
-        maxWidth: 545,
-        left: 750,
+        width: 600,
+        height: 450,
+        flexDirection: 'column',
     },
-    expand: {
-        transform: 'rotate(0deg)',
-        marginLeft: 'auto',
-        transition: theme.transitions.create('transform', {
-            duration: theme.transitions.duration.shortest,
-        }),
-    },
-    expandOpen: {
-        transform: 'rotate(180deg)',
+    container: {
+        height: '100vh',
+        flexDirection: 'column',
+        marginTop:'10%',
+        ...centered
     },
     paper: {
         padding: theme.spacing(2),
         textAlign: 'center',
         color: theme.palette.text.secondary,
-        width: '100%'
     },
     textField: {
         maxWidth: '100%',
-        width: '80%'
+        width: '80%',
     },
     header: {
         padding: theme.spacing(2),
         textAlign: 'center',
         color: indigo[500],
-        width: '100%',
         background: grey[100]
     },
     footer: {
@@ -70,32 +71,30 @@ const useStyles = makeStyles((theme) => ({
     linkCuenta: {
         color: indigo[500],
         padding: theme.spacing(3),
-        fontSize:16
+        fontSize: 16
     }
 }));
 
 const Login = () => {
 
     const loginContext = useContext(LoginContext);
-    const { loading, showPassword,logueado, handleClickShowPassword, handleMouseDownPassword, handleChange, password, setEmail, usuarioLogueado,getUsuario, errorUsuario, email,cleanComponentes } = loginContext;
+    const { loading, showPassword, logueado, handleClickShowPassword, handleMouseDownPassword, handleChange, password, setEmail, usuarioLogueado, getUsuario, errorUsuario, email, cleanComponentes } = loginContext;
     const classes = useStyles();
 
     useEffect(() => {
         cleanComponentes();
-    
-      }, [])
 
-    if(logueado){
-       return (
-           <Message Nombre={usuarioLogueado.nombre} />
-       )
+    }, [])
+
+    if (logueado) {
+        return (
+            <Message Nombre={usuarioLogueado.nombre} />
+        )
     }
 
     return (
-        <div className="text-center mt-5 ml-5" >
-            <Card className={classes.root}
-                justify="center"
-                alignItems="center">
+        <div className='container formulario'> 
+            <Card className={classes.root}>
                 <Paper className={classes.header}><h2>
                     Bienvenido</h2><br>
                     </br><h6 className="text-black">EMPAJ ONLINE{' '}<ComputerIcon /></h6></Paper>
@@ -136,22 +135,22 @@ const Login = () => {
                         <FormHelperText id="standard-weight-helper-text">Contraseña</FormHelperText>
                     </FormControl>
                     {(errorUsuario) &&
-                        <Alert severity="error">Password o Email invalido <a className={classes.linkCuenta} href="#/recovery">Recuparar Contraseña</a></Alert> 
-                        
-                        
+                        <Alert severity="error">Password o Email invalido <a className={classes.linkCuenta} href="#/recovery">Recuparar Contraseña</a></Alert>
+
+
                     }
                 </CardContent>
                 <Divider variant="middle" />
                 <Grid item xs={12}
-                        container
-                        justify="center"
-                        alignItems="center"
-                    >
-                         {(!loading)? <a className={classes.linkCuenta} href="#/create"><IoMdContact/>{' '}Crear Cuenta</a>
-                     :<CircularProgress color="secondary" />
-                     }
-                        
-                    </Grid>
+                    container
+                    justify="center"
+                    alignItems="center"
+                >
+                    {(!loading) ? <a className={classes.linkCuenta} href="#/create"><IoMdContact />{' '}Crear Cuenta</a>
+                        : <CircularProgress color="secondary" />
+                    }
+
+                </Grid>
                 <Divider variant="middle" />
                 <CardActions disableSpacing
                     className={classes.footer}

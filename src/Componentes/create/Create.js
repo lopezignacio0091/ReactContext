@@ -25,6 +25,12 @@ import IconButton from '@material-ui/core/IconButton';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import Progress from '../progress/Progress'
 import Message from '../Message/CreateMessage'
+import Container from '@material-ui/core/Container';
+const centered = {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center'
+};
 
 
 const useStyles = makeStyles((theme) => ({
@@ -41,6 +47,12 @@ const useStyles = makeStyles((theme) => ({
     },
     expandOpen: {
         transform: 'rotate(180deg)',
+    },
+    container: {
+        height: '100vh',
+        flexDirection: 'column',
+        marginTop:'10%',
+        ...centered
     },
     paper: {
         padding: theme.spacing(2),
@@ -90,7 +102,7 @@ if(usuarioCreate){
     )
 }
     return (
-        <div className="text-center mt-3 ml-5" >
+        <div className='container cardPrincipal'> 
             <Card className={classes.root}
                 justify="center"
                 alignItems="center"

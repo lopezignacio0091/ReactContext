@@ -21,6 +21,8 @@ import Error from '../Error/Error'
 const carrito = require("../../Img/contacto.png");
 
 
+
+
 const useStyles = makeStyles((theme) => ({
     root: {
         maxWidth: 745,
@@ -84,7 +86,7 @@ const FormularioContacto = () => {
     }, [])
 
     return (
-        <div className="text-center mt-4 ml-5" >
+        <div className='container formulario'> 
             <Card className={classes.root}
                 justify="center"
                 alignItems="center">

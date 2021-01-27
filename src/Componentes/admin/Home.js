@@ -41,7 +41,7 @@ const Home = () => {
         <>
             <div className="container-fluid">
                 <div className="row">
-                    <div className="col-sm-12 mt-2">
+                    <div className="col-sm-12 mt-5">
                         <br />
                         <AdminHeader></AdminHeader>
                     </div>

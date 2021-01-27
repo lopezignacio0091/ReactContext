@@ -51,7 +51,7 @@ const Home = () => {
     return (
 
         <>
-            <div className="container-fluid">
+            <div className="container-fluid cardPrincipal">
                 <div className="row">
                     <div className="col-sm-12 mt-2">
                         <br />

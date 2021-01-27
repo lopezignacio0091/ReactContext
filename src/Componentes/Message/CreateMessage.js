@@ -15,7 +15,7 @@ const CreateMessage = (props) => {
     const {Nombre} = props
     
     return(
-        <div className='container mt-2'> 
+        <div className='container cardPrincipal'> 
             <br/>
             <div className='card'>
             <div className='card-header'>
