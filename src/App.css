@@ -50,6 +50,10 @@
 .formularioContacto{
   background-image: url(./Img/Contactenos.jpg);
 }
+.fondoCompras{
+  background-image: url(./Img/fondoCompras.png);
+}
+
 
 /* @keyframes slidein {
   from {

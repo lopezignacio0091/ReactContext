@@ -43,18 +43,11 @@ const Compras = () => {
                 <div className="row">
                     <div className="col-sm-12 mt-5">
                         <br />
-                        <div className="card mt-4">
+                        <div className="card mt-4 fondoCompras">
                             <div className="card-body">
                                 <div className="container-fluid row">
                                     <div className="col-md-9 col-sm-12">
-                                        <h3><img
-                                alt=""
-                                src={IconMensaje}
-                                width="50"
-                                height="50"
-                                color="white"
-                                className="d-inline-block align-top"
-                            />{" "}Compras</h3>
+                                        <h1 className="text-left text-white">Compras</h1>
                                     </div>
                                 </div>
                             </div>

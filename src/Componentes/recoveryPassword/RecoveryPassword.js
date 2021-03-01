@@ -31,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
     root: {
         maxWidth: 545,
         left: 750,
-        marginTop:'20%',
+        marginTop:'15%',
         marginLeft:'20%'
     },
     expand: {
@@ -59,7 +59,8 @@ const useStyles = makeStyles((theme) => ({
         textAlign: 'center',
         color: indigo[500],
         width: '100%',
-        background: grey[100]
+        background: grey[100],
+        
     },
     footer: {
         color: grey[100],

@@ -40,7 +40,7 @@ const useStyles = makeStyles((theme) => ({
         width: 600,
         height: 500,
         flexDirection: 'column',
-        marginTop:'20%',
+        marginTop:'15%',
         marginLeft:'20%'
     },
     container: {

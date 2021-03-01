@@ -1,10 +1,10 @@
 import React from "react";
 import "../../../App.css";
 import { makeStyles } from '@material-ui/core/styles';
-import { Link } from "react-router-dom";
-import Button from '@material-ui/core/Button';
 import indigo from '@material-ui/core/colors/indigo';
 import { VscMail } from "react-icons/vsc";
+import { FaDollarSign } from "react-icons/fa";
+
  const useStyles = makeStyles((theme) => ({
         header: {
             color: indigo[100],
@@ -20,18 +20,11 @@ const HeaderAdmin = () => {
                 <div className="card-body">
                     <div className="container-fluid row">
                         <div className="col-md-8 col-sm-10 text-white">
-                            <h1 >Admin{/* {" "}<img
-                                alt=""
-                                src={carrito}
-                                width="50"
-                                height="50"
-                                color="white"
-                                className="d-inline-block align-top"
-                            /> */}</h1>
+                            <h1 >Admin</h1>
                         </div>
                         <div className="col-md-2 col-sm-2 text-white">
-                        <a  className="btn btn-secondary" variant="contained"  href='#/compras'>
-                      <VscMail/>{' '} Compras
+                        <a  className="btn btn-danger" variant="contained"  href='#/compras'>
+                      <FaDollarSign/>{' '} Compras
                              </a>  
                         </div>
                         <div className="col-md-2 col-sm-2 text-white">
