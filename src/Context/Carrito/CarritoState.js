@@ -47,24 +47,7 @@ const CarritoState = props => {
         })
     }
 
-    const deleteProduct = (item) => {
-        setLoading()
-        const requestOptions = {
-            method: 'PUT',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              id: item.id,
-            })
-          };
-          fetch('https://localhost:44380/api/CarritoProducto/', requestOptions)
-            .then(response => response.json())
-            .catch(error => console.error('Error:', error))
-            .then(response => 
-            dispatch({
-              type: REMOVE_PRODUCTO_CARRITO,
-            }));
-    }
-
+    
     
 
     const checkLogoutCarrito=(usuarioId)=>{
@@ -125,7 +108,6 @@ const CarritoState = props => {
                 total: state.total,
                 compraOk:state.compraOk,
                 postItemCarrito,
-                deleteProduct,
                 setLoading,
                 handleCloseMessage,
                 checkLogoutCarrito,

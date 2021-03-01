@@ -18,6 +18,7 @@ import FooterPagos from '../home/FooterEnvio/FooterEnvio'
 import indigo from '@material-ui/core/colors/indigo';
 import grey from '@material-ui/core/colors/grey';
 import Error from '../Error/Error'
+import CompraOk from '../Message/CompraOk';
 const carrito = require("../../Img/contacto.png");
 
 
@@ -29,7 +30,8 @@ const useStyles = makeStyles((theme) => ({
         left: 450,
         marginLeft: '30%',
         marginTop:150,
-        marginBottom:65
+        marginBottom:65,
+        width:600,
 
     },
     expand: {
@@ -57,13 +59,13 @@ const useStyles = makeStyles((theme) => ({
         textAlign: 'center',
         color: indigo[500],
         background: grey[100],
-        width: '100%'
+        width:600,
     },
     footer: {
         background: grey[100],
         padding: theme.spacing(3),
         textAlign: 'center',
-        width: '100%'
+        width:600,
     }
 
 }));
@@ -72,7 +74,7 @@ const useStyles = makeStyles((theme) => ({
 const FormularioContacto = () => {
 
     const contactoContext = useContext(ContactoContext);
-    const { MensajeContacto, setMensaje, postContacto, ContactoCreado, EmailValido, getUsuario, Nombre, Email } = contactoContext;
+    const { MensajeContacto, setMensaje, postContacto,ContactoCreado, EmailValido, getUsuario, Nombre, Email } = contactoContext;
     const loginContext = useContext(LoginContext);
     const { usuarioLogueado, logueado } = loginContext;
 
@@ -82,6 +84,11 @@ const FormularioContacto = () => {
         )
     }
 
+    if(ContactoCreado){
+        return(
+            <CompraOk Nombre={Nombre} Mensaje={"Muchas gracias por su mensaje a la brevedad tendra respuesta de la misma"}/>
+        )
+    }
 
     const classes = useStyles();
 
@@ -179,16 +186,12 @@ const FormularioContacto = () => {
                                 alignItems="center"
                             >
                                 <Paper >
-                                    <Button variant="contained" color="secondary" to='/'>
-                                        <Link ></Link>
-                                    Cancelar
-                                </Button>
+                                <a  className="btn btn-danger" color="secondary" variant="contained"  href='#/'>
+                                 Cancelar
+                                 </a>  
                                 </Paper>
                             </Grid>
                         </CardActions>
-                        {(ContactoCreado) &&
-                            <Alert severity="success">{MensajeContacto}</Alert>
-                        }
                     </Card>
                 </Grid>
             </div>

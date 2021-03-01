@@ -40,19 +40,14 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SimpleAccordion() {
   const loginContext = useContext(LoginContext);
-  const { usuarioLogueado,getUsuario} = loginContext
-  const carritoContext = useContext(CarritoContext);
-  const {deleteProduct} = carritoContext
+  const { usuarioLogueado,getUsuario,deleteProduct} = loginContext
   const classes = useStyles();
 
 
   if (!usuarioLogueado.carrito.listaCarritoProductos) {return (<MessageItems />);}
  
  const eliminandoProducto =(itemCO)=>{
-
   deleteProduct(itemCO);
-  setTimeout(function(){getUsuario(); }, 5000);
- 
  }
  
   return (

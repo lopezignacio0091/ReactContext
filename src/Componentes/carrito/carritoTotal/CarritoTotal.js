@@ -7,7 +7,7 @@ import Grid from '@material-ui/core/Grid';
 import indigo from '@material-ui/core/colors/indigo';
 import red from '@material-ui/core/colors/red';
 import blueGrey from '@material-ui/core/colors/blueGrey';
-import { makeStyles, useTheme, withTheme } from '@material-ui/core/styles';
+import {makeStyles} from '@material-ui/core/styles';
 import "../../../App.css";
 
 const useStyles = makeStyles((theme) => ({
@@ -55,7 +55,7 @@ const HeaderCarrito = () => {
                 <Grid container >
                     <Grid item xs={12} spacing={1}></Grid>
                     <Grid item xs={12} className={classes.footer} spacing={1}>
-                        <Button variant="contained" color="primary" onClick={() => comprar(usuarioLogueado.id)}><h5>Comprar</h5></Button>
+                        <Button variant="contained" color="primary" disabled={usuarioLogueado.carrito.total==0}onClick={() => comprar(usuarioLogueado.id)}><h5>Comprar</h5></Button>
                     </Grid>
 
                 </Grid>

@@ -25,7 +25,7 @@ import IconButton from '@material-ui/core/IconButton';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import Progress from '../progress/Progress'
 import Message from '../Message/CreateMessage'
-import Container from '@material-ui/core/Container';
+import Footer from '../home/FooterHome/FooterHome'
 const centered = {
     display: 'flex',
     alignItems: 'center',
@@ -102,7 +102,9 @@ if(usuarioCreate){
     )
 }
     return (
-        <div className='container formulario'> 
+        <>
+        <div className='container-fluid formulario'>
+             <Grid container spacing={3}>  
             <Card className={classes.root}
                 justify="center"
                 alignItems="center"
@@ -198,7 +200,10 @@ if(usuarioCreate){
                     </Grid>
                 </CardActions>
             </Card>
+            </Grid>
         </div>
+        <Footer></Footer>
+        </>
     )
 }
 export default Create

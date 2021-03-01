@@ -16,7 +16,7 @@ const HeaderAdmin = () => {
    
     return (
         <>
-            <div className="card headerAdmin ">
+            <div className="card headerAdmin">
                 <div className="card-body">
                     <div className="container-fluid row">
                         <div className="col-md-8 col-sm-10 text-white">

@@ -25,6 +25,9 @@ const useStyles = makeStyles((theme) => ({
     control: {
         padding: theme.spacing(2),
     },
+    estilos:{
+        marginBottom:50
+    }
 }));
 
 
@@ -34,11 +37,11 @@ const FooterEnvio = () => {
     const classes = useStyles();
 
     return (
-            <div className="mt-5">
-                <Grid container justify="center" >
+            <div className="mt-5 mb-5">
+                <Grid container justify="center" className={classes.estilos}>
                     <Grid item spacing={2} className={classes.paper}>
                         <ThemeProvider theme={theme}>
-                            <Typography variant="h6"><AirportShuttleIcon></AirportShuttleIcon> ENVIO GRATIS EN PEDIDOS</Typography>
+                            <Typography variant="h6"><AirportShuttleIcon></AirportShuttleIcon> ENVIO GRATIS EN TUS PEDIDOS</Typography>
                         </ThemeProvider>
                         <p>Entregas a todo el país</p>
                     </Grid>

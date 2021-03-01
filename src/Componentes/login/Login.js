@@ -27,6 +27,7 @@ import FormHelperText from '@material-ui/core/FormHelperText';
 import Message from '../Message/LoginMessage'
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { IoMdContact } from "react-icons/io";
+import Footer from '../home/FooterHome/FooterHome'
 
 const centered = {
     display: 'flex',
@@ -93,7 +94,9 @@ const Login = () => {
     }
 
     return (
-        <div className='container formulario'> 
+        <>
+        <div className='container-fluid formulario'>  
+         <Grid container spacing={3}> 
             <Card className={classes.root}>
                 <Paper className={classes.header}><h2>
                     Bienvenido</h2><br>
@@ -175,7 +178,10 @@ const Login = () => {
                     </Grid>
                 </CardActions>
             </Card>
+            </Grid>
         </div>
+        <Footer/>
+                    </>
     )
 }
 export default Login

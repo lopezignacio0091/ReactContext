@@ -56,8 +56,7 @@ export default (state, action) => {
                     case CLEAN_INPUTS:
                     return {
                         ...state,
-                        Email:'',
-                        Nombre:'',
+                        ContactoCreado:false,
                         Mensaje:'',
                     } 
                     case EMAIL_INVALIDO:
@@ -69,6 +68,7 @@ export default (state, action) => {
                     case SET_USUARIO_LOGUEADO:
                         return {
                             ...state,
+                            loading:false,
                             Email:action.payload.email,
                             Nombre:action.payload.nombre
                         } 

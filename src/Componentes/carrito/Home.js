@@ -24,7 +24,7 @@ const Home = () => {
     const loginContext = useContext(LoginContext);
     const { logueado ,getUsuario,loading,usuarioLogueado} = loginContext;
     const carritoContext = useContext(CarritoContext);
-    const {compraOk,loadingCarrito} = carritoContext;
+    const {compraOk} = carritoContext;
     const classes = useStyles();
 
     useEffect(() => {
@@ -32,8 +32,8 @@ const Home = () => {
       }, [])
 
     if(!logueado){return (<Error/>)}
-    if(loading || loadingCarrito){return (<Progress/>) }
-    if(compraOk){return(<CompraOk Nombre={usuarioLogueado.nombre}/>)}
+    if(loading){return (<Progress/>) }
+    if(compraOk){return(<CompraOk Nombre={usuarioLogueado.nombre} Mensaje={"Muchas gracias por su compra a la brevedad se comunicaran contigo"}/>)}
     return (
 
         <>

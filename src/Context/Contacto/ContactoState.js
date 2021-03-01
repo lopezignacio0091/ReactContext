@@ -17,7 +17,7 @@ import {
 } from '../types/types'
 
 
-const HomeState = props => {
+const ContactoState = props => {
 
     const initialState = {
         loading: false,
@@ -31,7 +31,8 @@ const HomeState = props => {
         ContactoId :0,
         columna:[],
         mensaje:[],
-        options:{}
+        options:{},
+        mensajeCreado:false
 
 
     }
@@ -40,10 +41,8 @@ const HomeState = props => {
     const setLoading = () => dispatch({ type: SET_LOADING });
 
     const postContacto = () => {
-
-     if(validateEmail(state.Email)){
+        setLoading()
         if (!validateContacto(state.Nombre, state.Mensaje)) {
-
             dispatch({
                 type: MSG_ERROR_VALIDATED,
                 payload: true
@@ -70,15 +69,11 @@ const HomeState = props => {
             })
     
         }
-     }else{
-        dispatch({
-            type: EMAIL_INVALIDO,
-            payload: true
-        })
      }
-    }
+    
 
-    const cleanInputs = () =>{ 
+    const cleanInputs = () =>{
+        setLoading() 
         dispatch({
             type:CLEAN_INPUTS
         })
@@ -93,14 +88,7 @@ const HomeState = props => {
         }
     }
 
-    const validateEmail= (Email) => {
-        if (/^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
-        .test(Email) && Email.length>0){
-            return true;
-           } else {
-           return false;
-           }
-    }
+  
 
     const getUsuario=(usuario)=>{
         dispatch({
@@ -128,12 +116,10 @@ const HomeState = props => {
     }
 
     const setMensaje = (mensaje) => {
-
         dispatch({
             type: SET_MENSAJE,
             payload: mensaje.target.value
         })
-
     }
 
     const getMensajes =()=>{
@@ -181,6 +167,7 @@ const HomeState = props => {
                 columna:state.columna,
                 mensaje:state.mensaje,
                 options:state.options,
+                mensajeCreado:state.mensajeCreado,
                 cleanInputs,
                 setLoading,
                 postContacto,
@@ -194,4 +181,4 @@ const HomeState = props => {
         </ContactoContext.Provider>
     )
 }
-export default HomeState;
+export default ContactoState;

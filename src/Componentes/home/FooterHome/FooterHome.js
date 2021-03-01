@@ -17,7 +17,7 @@ import Typography from '@material-ui/core/Typography';
   const OceanAppFooterDemo = React.memo(function OceanAppFooter() {
   return (
    // <FontProvider fonts={[{ font: 'Oswald' }]}>
-      <Box width={'100%'} px={{ xs: 2, sm: 3, lg: 4 }} style={{marginTop:'100px',backgroundColor:"rgb(167, 163, 163)"}}>
+      <Box width={'100%'} px={{ xs: 2, sm: 3, lg: 4 }} style={{backgroundColor:"rgb(167, 163, 163)"}}>
         <Box pt={6} pb={{ md: 6 }}>
           <Grid container spacing={4}>
             <Grid item xs={12} md={4} lg={3}>

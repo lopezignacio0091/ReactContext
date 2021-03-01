@@ -15,22 +15,14 @@ const useStyles = makeStyles((theme) => ({
 const SuccessMessage = (props) => {
 
     const classes = useStyles();
-    const {Nombre} = props
-    const carritoContext = useContext(CarritoContext);
-    const {limpiarState} = carritoContext;
-
-    // useEffect(() => {
-    //     limpiarState()
-    //   }, [])
-
-
-
+    const {Nombre,Mensaje} = props
+     
     return(
         <div className='container cardPrincipal'> 
             <br/>
             <div className='card'>
             <div className='card-header'>
-              <h3 className={classes.header}>Muchas gracias por su compra {Nombre}</h3>
+              <h3 className={classes.header}>{Mensaje} {Nombre}</h3>
             </div>
             <div className='card-body'>
                 <p>

@@ -16,7 +16,7 @@ export default (state, action) => {
         case SET_LOADING:
             return {
                 ...state,
-                loadingCarrito: true
+                loadingCarrito:true
             }
         case SET_CARRITO:
             return {

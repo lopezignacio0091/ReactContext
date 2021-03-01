@@ -16,7 +16,8 @@ import {
   CLEAN_INPUTS,
   SET_PASSWORD_RECOVERY,
   CLEAN_ERROR,
-  SET_VIEW_PASSWORD_REPEAT
+  SET_VIEW_PASSWORD_REPEAT,
+  
 } from '../types/types'
 
 
@@ -127,6 +128,22 @@ const LoginState = props => {
 
   }
 
+  const deleteProduct = (item) => {
+    setLoading()
+    const requestOptions = {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          id: item.id,
+          Cantidad:item.cantidad
+        })
+      };
+      fetch('https://localhost:44380/api/CarritoProducto/', requestOptions)
+        .then(response => response.json())
+        .catch(error => console.error('Error:', error))
+        .then(response => getUsuario())
+}
+
 
   const cleanComponentes = () => {
     dispatch({
@@ -204,6 +221,7 @@ const LoginState = props => {
         getUsuario,
         setEmail,
         handleChange,
+        deleteProduct,
         logout,
         cleanComponentes,
         setPasswordRepeat,

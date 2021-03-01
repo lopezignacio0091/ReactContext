@@ -43,12 +43,14 @@
 }
 
 .formulario{
-  margin-top: 10%;
-  margin-left: 20%;
+  background-image: url(./Img/fondoFormulario.png);
+  height: 1100px !important;
+
 }
 .formularioContacto{
   background-image: url(./Img/Contactenos.jpg);
 }
+
 /* @keyframes slidein {
   from {
     margin-top:-500px;
