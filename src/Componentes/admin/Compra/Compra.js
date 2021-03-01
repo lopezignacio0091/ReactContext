@@ -1,21 +1,29 @@
 import React from "react";
 import { useContext ,useEffect} from 'react';
-import ContactoContext from '../../../Context/Contacto/ContactoContext'
+import CompraContext from '../../../Context/Compras/CompraContext'
 import LoginContext from '../../../Context/Login/LoginContext'
 import MUIDataTable from "mui-datatables";
 import Loading from '../../progress/Progress'
 import Error from '../../Error/Error'
-const IconMensaje = require("../../../Img/icons8-email-open-48.png");
+const IconMensaje = require("../../../Img/compras-públicas.jpg");
 
-const Mensaje = () => {
+
+
+
+
+const Compras = () => {
     const loginContext = useContext(LoginContext);
     const { logueado } = loginContext; 
-    const contactoContext = useContext(ContactoContext);
-    const { getMensajes,columna,mensaje,options,loading} = contactoContext;
-    
+    const compraContext = useContext(CompraContext);
+    const { getCompras,columna,options,loading,compras} = compraContext;
+   
+   
+
     useEffect(() => {
-        getMensajes();
+        getCompras();
       }, [])
+
+
 
       if(loading){
           return(
@@ -35,7 +43,7 @@ const Mensaje = () => {
                 <div className="row">
                     <div className="col-sm-12 mt-5">
                         <br />
-                        <div className="card mt-5">
+                        <div className="card mt-4">
                             <div className="card-body">
                                 <div className="container-fluid row">
                                     <div className="col-md-9 col-sm-12">
@@ -46,7 +54,7 @@ const Mensaje = () => {
                                 height="50"
                                 color="white"
                                 className="d-inline-block align-top"
-                            />{" "}Mensajes</h3>
+                            />{" "}Compras</h3>
                                     </div>
                                 </div>
                             </div>
@@ -60,8 +68,8 @@ const Mensaje = () => {
                                 <div className="container-fluid row">
                                     <div className="col-md-9 col-sm-12 text-white">
                                     <MUIDataTable 
-                                        title={"Mensajes"} 
-                                        data={mensaje} 
+                                        title={"Compras"} 
+                                        data={compras} 
                                         columns={columna} 
                                         options={options} 
                                         />
@@ -76,4 +84,4 @@ const Mensaje = () => {
     );
 };
 
-export default Mensaje;
+export default Compras;

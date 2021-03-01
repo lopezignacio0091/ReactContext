@@ -41,7 +41,7 @@ const useStyles = makeStyles((theme) => ({
   },
   button: {
     padding: theme.spacing(3),
-    marginLeft: theme.spacing(4)
+    marginLeft: theme.spacing(2)
   }
 }));
 
@@ -100,7 +100,7 @@ const CardProducto = () => {
                   justify="center"
                   alignItems="center"
                 >
-                  <Grid item xs={6} spacing={1}>
+                  <Grid item xs={8} spacing={1}>
                     <Button
                       variant="contained"
                       color="secondary"
@@ -141,7 +141,7 @@ const CardProducto = () => {
                           </Button>
                    
                   </Grid>
-                  <MessageCarrito></MessageCarrito>
+                  <MessageCarrito color="info" mensaje="Se agrego el producto correctamente"></MessageCarrito>
                 </Grid>:<span></span>}
               </CardActions>
             </Card>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { useContext } from 'react';
+import { useContext ,useEffect} from 'react';
 import CarritoContext from '../../../Context/Carrito/CarritoContext'
 import LoginContext from '../../../Context/Login/LoginContext'
 import { makeStyles } from '@material-ui/core/styles';
@@ -12,6 +12,8 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MessageItems from '../messageItems/MessageItems'
 import Grid from '@material-ui/core/Grid';
 import { IoIosCalendar } from "react-icons/io";
+import MessageCarrito from '../../cards/messageCarrito/messageCarrito'
+import Progress from '../../progress/Progress'
 const useStyles = makeStyles((theme) => ({
   root: {
     width: '100%',
@@ -38,17 +40,21 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SimpleAccordion() {
   const loginContext = useContext(LoginContext);
-  const { usuarioLogueado } = loginContext
+  const { usuarioLogueado,getUsuario} = loginContext
   const carritoContext = useContext(CarritoContext);
-  const {deleteProduct } = carritoContext
+  const {deleteProduct} = carritoContext
   const classes = useStyles();
-  if (!usuarioLogueado.carrito.listaCarritoProductos) {
-    return (
-      <>
-        <MessageItems />
-      </>
-    );
-  }
+
+
+  if (!usuarioLogueado.carrito.listaCarritoProductos) {return (<MessageItems />);}
+ 
+ const eliminandoProducto =(itemCO)=>{
+
+  deleteProduct(itemCO);
+  setTimeout(function(){getUsuario(); }, 5000);
+ 
+ }
+ 
   return (
     <div >
       {usuarioLogueado.carrito.listaCarritoProductos.map(itemCO => (
@@ -63,7 +69,7 @@ export default function SimpleAccordion() {
               <Typography className={classes.heading}>Nombre:{' '}{itemCO.producto.nombre}</Typography>
             </Grid>
             <Grid item xs={6}>
-              <Button variant="contained" color="secondary" size="small" onClick={() => deleteProduct(itemCO)}>
+              <Button variant="contained" color="secondary" size="small" onClick={() => eliminandoProducto(itemCO)}>
                 Eliminar
               </Button>
             </Grid>
@@ -76,7 +82,9 @@ export default function SimpleAccordion() {
               <Typography className={classes.heading}>Cantidad:{' '}{itemCO.cantidad}</Typography>
             </Grid>
           </AccordionDetails>
+          <MessageCarrito color="error" mensaje="Se Elimino el producto correctamente"></MessageCarrito>
         </Accordion>
+        
       ))}
     </div>
   );

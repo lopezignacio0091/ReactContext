@@ -19,7 +19,7 @@ const HeaderAdmin = () => {
             <div className="card headerAdmin ">
                 <div className="card-body">
                     <div className="container-fluid row">
-                        <div className="col-md-10 col-sm-10 text-white">
+                        <div className="col-md-8 col-sm-10 text-white">
                             <h1 >Admin{/* {" "}<img
                                 alt=""
                                 src={carrito}
@@ -28,6 +28,11 @@ const HeaderAdmin = () => {
                                 color="white"
                                 className="d-inline-block align-top"
                             /> */}</h1>
+                        </div>
+                        <div className="col-md-2 col-sm-2 text-white">
+                        <a  className="btn btn-secondary" variant="contained"  href='#/compras'>
+                      <VscMail/>{' '} Compras
+                             </a>  
                         </div>
                         <div className="col-md-2 col-sm-2 text-white">
                         <a  className="btn btn-secondary" variant="contained"  href='#/mensaje'>

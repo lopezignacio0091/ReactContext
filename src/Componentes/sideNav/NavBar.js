@@ -4,7 +4,6 @@ import { useContext, useEffect } from 'react';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import LoginContext from '../../Context/Login/LoginContext'
 import CarritoContext from '../../Context/Carrito/CarritoContext'
-import ModalSesion  from '../modals/ModalConfirmacion'
 import Drawer from '@material-ui/core/Drawer';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import AppBar from '@material-ui/core/AppBar';
@@ -27,10 +26,8 @@ import SettingsApplicationsRoundedIcon from '@material-ui/icons/SettingsApplicat
 import BuildIcon from '@material-ui/icons/Build';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import { Link } from 'react-router-dom';
-import imageFondo from '../../Img/navsLateral.jpg'
+// import imageFondo from '../../Img/navsLateral.jpg'
 import blueGrey from '@material-ui/core/colors/blueGrey';
-import lightBlue from '@material-ui/core/colors/lightBlue';
-import grey from '@material-ui/core/colors/grey';
 import indigo from '@material-ui/core/colors/indigo';
 const drawerWidth = 240;
 

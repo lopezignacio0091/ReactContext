@@ -102,7 +102,7 @@ if(usuarioCreate){
     )
 }
     return (
-        <div className='container cardPrincipal'> 
+        <div className='container formulario'> 
             <Card className={classes.root}
                 justify="center"
                 alignItems="center"
@@ -192,10 +192,9 @@ if(usuarioCreate){
                         justify="center"
                         alignItems="center"
                     >
-                        <Button variant="contained" color="secondary" to='#/'>
-                            <Link ></Link>
-                                Cancelar
-                             </Button>
+                        <a  className="btn btn-danger" color="secondary" variant="contained"  href='#/'>
+                            Cancelar
+                             </a>  
                     </Grid>
                 </CardActions>
             </Card>

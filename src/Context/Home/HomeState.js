@@ -66,34 +66,7 @@ const HomeState = props => {
         })
     }
 
-    // const getImagen = () => {
-    //   setLoading()
-    //     fetch("https://localhost:44380/api/Imagen/")
-    //   .then(res => res.json())
-    //   .then(
-    //     (result) => {
-    //          DataGraficos(result);
-    //         const objItemHome = [];
-    //         for (let x = 0; x < result.length; x++) {
-    //             const element = result[x];
-    //             const item = {};
-    //             item.Nombre = element.producto.nombre;
-    //             item.Id = element.productoId;
-    //             item.Precio = element.producto.precio;
-    //             item.Stock = element.producto.stock;
-    //             item.Descripcion = element.producto.descripcion;
-    //             item.ImagenUrl  = element.imagenUrl;
-    //             item.Cantidad =0;
-    //             item.Fecha=moment().format('LL');  ;
-    //             objItemHome.push(item);
-    //         }
-    //         armandoOptionProduct(objItemHome);
-    //         dispatch({
-    //             type: GET_IMAGEN,
-    //             payload: objItemHome
-    //         });
-    //     })
-    // }
+  
  
     const DataGraficos =(item)=>{
       const objItemLabel = [];

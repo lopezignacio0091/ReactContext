@@ -32,7 +32,7 @@ const HeaderCarrito = () => {
     const loginContext = useContext(LoginContext);
      const { usuarioLogueado } = loginContext
     const carritoContext = useContext(CarritoContext);
-    const { total ,comprar} = carritoContext
+    const {comprar} = carritoContext
     const classes = useStyles();
     return (
 

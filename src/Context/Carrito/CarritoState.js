@@ -8,7 +8,7 @@ import CarritoReducer from './CarritoReducer';
 import {
     SET_LOADING,
     CLOSE_MESSAGE_CARRITO,
-    SET_CARRITO_TOTAL,
+    REMOVE_PRODUCTO_CARRITO,
     SET_CARRITO_DELETE,
     SET_ITEM_CARRITO,
     MSG_COMPRA,
@@ -20,12 +20,13 @@ import {
 const CarritoState = props => {
 
     const initialState = {
-        loading: false,
+        loadingCarrito: false,
         carrito: [],
         messageAddCarrito: false,
         cantidad: 0,
         total: 0,
         compraOk:false,
+        itemRemove:false,
 
     }
 
@@ -37,18 +38,6 @@ const CarritoState = props => {
 
     const postItemCarrito = (item,carritoNuevo) => {
         agregarProductoCarrito(item,carritoNuevo)
-
-    }
-
-    const validandoItemCarrito = (item) => {
-        let value = true;
-        state.carrito.forEach(element => {
-            if (element.Id == item.Id) {
-                element.Cantidad = element.Cantidad + item.Cantidad;
-                value= false;
-            }
-        });
-        return value;
     }
 
 
@@ -59,30 +48,24 @@ const CarritoState = props => {
     }
 
     const deleteProduct = (item) => {
-
-        let j = 0;
-        for (let x = 0; x < state.carrito.length; x++) {
-            const elem = state.carrito[x];
-            if (elem.Nombre == item.Nombre) {
-                j = x;
-            }
-        }
-        state.carrito.splice(j, 1);
-        restarTotal(item);
-        dispatch({
-            type: SET_CARRITO_DELETE,
-            payload: state.carrito
-        })
+        setLoading()
+        const requestOptions = {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              id: item.id,
+            })
+          };
+          fetch('https://localhost:44380/api/CarritoProducto/', requestOptions)
+            .then(response => response.json())
+            .catch(error => console.error('Error:', error))
+            .then(response => 
+            dispatch({
+              type: REMOVE_PRODUCTO_CARRITO,
+            }));
     }
 
-    const restarTotal = (item) => {
-        let precioCantidad = item.Cantidad * item.Precio;
-        let restando = state.total - precioCantidad;
-        dispatch({
-            type: SET_CARRITO_TOTAL,
-            payload: restando
-        })
-    }
+    
 
     const checkLogoutCarrito=(usuarioId)=>{
         if(state.carrito.length>0){
@@ -135,7 +118,7 @@ const CarritoState = props => {
     return (
         <CarritoContext.Provider
             value={{
-                loading: state.loading,
+                loadingCarrito: state.loadingCarrito,
                 carrito: state.carrito,
                 messageAddCarrito: state.messageAddCarrito,
                 cantidad: state.cantidad,
@@ -147,6 +130,7 @@ const CarritoState = props => {
                 handleCloseMessage,
                 checkLogoutCarrito,
                 agregarProductoCarrito,
+                itemRemove:state.itemRemove,
                 comprar,
                 limpiarState
             }}>

@@ -3,7 +3,7 @@ import {
     SET_CARRITO,
     CLOSE_MESSAGE_CARRITO,
     ADD_CANTIDAD,
-    REMOVE_CANTIDAD,
+    REMOVE_PRODUCTO_CARRITO,
     SET_CARRITO_TOTAL,
     SET_CARRITO_DELETE,
     SET_ITEM_CARRITO,
@@ -16,7 +16,7 @@ export default (state, action) => {
         case SET_LOADING:
             return {
                 ...state,
-                loading: true
+                loadingCarrito: true
             }
         case SET_CARRITO:
             return {
@@ -28,6 +28,8 @@ export default (state, action) => {
                 return {
                     ...state,
                     messageAddCarrito: true,
+                    loadingCarrito: false
+
                 }
         case CLOSE_MESSAGE_CARRITO:
             return {
@@ -43,16 +45,17 @@ export default (state, action) => {
             return {
                 ...state,
                 compraOk:true,
+                loadingCarrito: false
             }
             case CLEAR_STAGE:
             return {
                 ...state,
                 compraOk:false,
             }
-        case REMOVE_CANTIDAD:
+        case REMOVE_PRODUCTO_CARRITO:
             return {
                 ...state,
-                cantidad: (state.cantidad == 0) ? 0 : -1,
+                loadingCarrito: false
             }
         case SET_CARRITO_TOTAL:
             return {

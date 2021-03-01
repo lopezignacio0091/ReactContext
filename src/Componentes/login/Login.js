@@ -37,7 +37,7 @@ const centered = {
 const useStyles = makeStyles((theme) => ({
     root: {
         width: 600,
-        height: 450,
+        height: 500,
         flexDirection: 'column',
     },
     container: {
@@ -63,7 +63,7 @@ const useStyles = makeStyles((theme) => ({
     },
     footer: {
         color: grey[100],
-        padding: theme.spacing(3),
+        padding: theme.spacing(6),
         textAlign: 'center',
         width: '100%',
         background: grey[100]
@@ -169,10 +169,9 @@ const Login = () => {
                         justify="center"
                         alignItems="center"
                     >
-                        <Button variant="contained" color="secondary" to='/'>
-                            <Link ></Link>
-                                Cancelar
-                             </Button>
+                              <a  className="btn btn-danger" color="secondary" variant="contained"  href='#/'>
+                            Cancelar
+                             </a>  
                     </Grid>
                 </CardActions>
             </Card>

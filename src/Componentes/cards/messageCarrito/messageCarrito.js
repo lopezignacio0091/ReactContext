@@ -3,14 +3,14 @@ import { useContext} from 'react';
 import CarritoContext from '../../../Context/Carrito/CarritoContext'
 import Snackbar from '@material-ui/core/Snackbar';
 import Alert from 'react-bootstrap/Alert';
-const MessageCarrito = () => {
+const MessageCarrito = ({color,mensaje}) => {
     const carritoContext = useContext(CarritoContext);
     const { handleCloseMessage, messageAddCarrito } = carritoContext
 
     return (
         <Snackbar open={messageAddCarrito} autoHideDuration={6000} onClose={handleCloseMessage}>
-            <Alert severity="info">
-                El producto se agrego al carrito
+            <Alert severity={color}>
+                {mensaje}
             </Alert>
         </Snackbar>
     );

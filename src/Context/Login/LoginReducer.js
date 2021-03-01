@@ -77,6 +77,7 @@ export default (state, action) => {
                                 ...state,
                                 email:'',
                                 password:'',
+                                errorUsuario:false,
                                
                             }
     }
