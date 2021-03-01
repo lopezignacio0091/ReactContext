@@ -25,8 +25,12 @@ const carrito = require("../../Img/contacto.png");
 
 const useStyles = makeStyles((theme) => ({
     root: {
-        maxWidth: 745,
+        maxWidth: 845,
         left: 450,
+        marginLeft: '30%',
+        marginTop:150,
+        marginBottom:65
+
     },
     expand: {
         transform: 'rotate(0deg)',
@@ -68,13 +72,13 @@ const useStyles = makeStyles((theme) => ({
 const FormularioContacto = () => {
 
     const contactoContext = useContext(ContactoContext);
-    const {MensajeContacto,setMensaje, postContacto, ContactoCreado, EmailValido ,getUsuario,Nombre,Email} = contactoContext;
+    const { MensajeContacto, setMensaje, postContacto, ContactoCreado, EmailValido, getUsuario, Nombre, Email } = contactoContext;
     const loginContext = useContext(LoginContext);
-    const {usuarioLogueado,logueado} = loginContext;
-    
-    if(!logueado){
+    const { usuarioLogueado, logueado } = loginContext;
+
+    if (!logueado) {
         return (
-            <Error/>
+            <Error />
         )
     }
 
@@ -86,107 +90,110 @@ const FormularioContacto = () => {
     }, [])
 
     return (
-        <div className='container formulario'> 
-            <Card className={classes.root}
-                justify="center"
-                alignItems="center">
-                <Paper className={classes.header}><h2>
-                    <img
-                        alt=""
-                        src={carrito}
-                        width="50"
-                        height="50"
-                        color="white"
-                        className="d-inline-block align-top"
-                    />{" "}Formulario Contacto</h2></Paper>
-                <Divider variant="middle" />
-                <CardContent>
-                    <Grid item md={12}
-                        container
-                    >
-
-                        <TextField
-                            label="Nombre"
-                            id="margin-none"
-                            className={classes.textField}
-                            helperText="Ingrese su Nombre"
-                            disabled
-                            value={Nombre}
-                        />
-
-                    </Grid>
-
-
-                    <Grid item xs={12}
-                        container
-                    >
-
-                        <TextField
-                            label="Email"
-                            id="margin-none"
-                            className={classes.textField}
-                            helperText="Ingrese su Email"
-                            disabled
-                            value={Email}
-                        />
-
-                    </Grid>
-                    <Grid item xs={12}
-                        container
-                    >
-
-                        <TextField
-                            id="outlined-multiline-static"
-                            label="Mensaje"
-                            multiline
-                            rows={4}
-                            helperText="Ingrese su Mensaje"
-                            variant="outlined"
-                            onChange={setMensaje}
-                            className={classes.textField}
-                        />
-                    </Grid>
-                    {(EmailValido) &&
-                        <Alert severity="error">{MensajeContacto}</Alert>
-                    }
-
-                </CardContent>
-                <Divider variant="middle" />
-
-                <CardActions disableSpacing
-                    className={classes.footer}
-                >
-                    <Grid item xs={6}
-                        container
+        <>
+            <div className='container-fluid formularioContacto mt-5'>
+                <Grid container spacing={3}> 
+                    <Card className={classes.root}
                         justify="center"
-                        alignItems="center"
-                    >
-                        <Paper>
-                            <Button variant="contained" color="primary" onClick={() => postContacto()}>
-                                Aceptar
-                         </Button>
-                        </Paper>
-                    </Grid>
-                    <Grid item xs={6}
-                        container
-                        justify="center"
-                        alignItems="center"
-                    >
-                        <Paper >
-                            <Button variant="contained" color="secondary" to='/'>
-                                <Link ></Link>
-                                Cancelar
-                             </Button>
-                        </Paper>
-                    </Grid>
-                </CardActions>
-                {(ContactoCreado) &&
-                    <Alert severity="success">{MensajeContacto}</Alert>
-                }
-            </Card>
-            <FooterPagos></FooterPagos>
+                        alignItems="center">
+                        <Paper className={classes.header}><h2>
+                            <img
+                                alt=""
+                                src={carrito}
+                                width="50"
+                                height="50"
+                                color="white"
+                                className="d-inline-block align-top"
+                            />{" "}Formulario Contacto</h2></Paper>
+                        <Divider variant="middle" />
+                        <CardContent  className={classes.textField}>
+                            <Grid item md={12}
+                                container
+                            >
+
+                                <TextField
+                                    label="Nombre"
+                                    id="margin-none"
+                                    className={classes.textField}
+                                    helperText="Ingrese su Nombre"
+                                    disabled
+                                    value={Nombre}
+                                />
+
+                            </Grid>
+
+
+                            <Grid item xs={12}
+                                container
+                            >
+
+                                <TextField
+                                    label="Email"
+                                    id="margin-none"
+                                    className={classes.textField}
+                                    helperText="Ingrese su Email"
+                                    disabled
+                                    value={Email}
+                                />
+
+                            </Grid>
+                            <Grid item xs={12}
+                                container
+                            >
+
+                                <TextField
+                                    id="outlined-multiline-static"
+                                    label="Mensaje"
+                                    multiline
+                                    rows={4}
+                                    helperText="Ingrese su Mensaje"
+                                    variant="outlined"
+                                    onChange={setMensaje}
+                                    className={classes.textField}
+                                />
+                            </Grid>
+                            {(EmailValido) &&
+                                <Alert severity="error">{MensajeContacto}</Alert>
+                            }
+
+                        </CardContent>
+                        <Divider variant="middle" />
+
+                        <CardActions disableSpacing
+                            className={classes.footer}
+                        >
+                            <Grid item xs={6}
+                                container
+                                justify="center"
+                                alignItems="center"
+                            >
+                                <Paper>
+                                    <Button variant="contained" color="primary" onClick={() => postContacto()}>
+                                        Aceptar
+                            </Button>
+                                </Paper>
+                            </Grid>
+                            <Grid item xs={6}
+                                container
+                                justify="center"
+                                alignItems="center"
+                            >
+                                <Paper >
+                                    <Button variant="contained" color="secondary" to='/'>
+                                        <Link ></Link>
+                                    Cancelar
+                                </Button>
+                                </Paper>
+                            </Grid>
+                        </CardActions>
+                        {(ContactoCreado) &&
+                            <Alert severity="success">{MensajeContacto}</Alert>
+                        }
+                    </Card>
+                </Grid>
+            </div>
             <Footer></Footer>
-        </div>
+        </>
     )
 }
 export default FormularioContacto

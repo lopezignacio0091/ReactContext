@@ -46,6 +46,9 @@
   margin-top: 10%;
   margin-left: 20%;
 }
+.formularioContacto{
+  background-image: url(./Img/Contactenos.jpg);
+}
 /* @keyframes slidein {
   from {
     margin-top:-500px;

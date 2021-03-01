@@ -8,6 +8,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import indigo from '@material-ui/core/colors/indigo';
 import Progress from '../progress/Progress'
 import Error from '../Error/Error'
+import Footer from '../home/FooterHome/FooterHome'
 
 const useStyles = makeStyles((theme) => ({
     header: {
@@ -54,6 +55,7 @@ const Home = () => {
                 </div>
                 <br />
             </div>
+            <Footer/>
         </>
     );
 }

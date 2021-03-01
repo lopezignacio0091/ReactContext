@@ -71,6 +71,7 @@ const CardProducto = () => {
     )
   }
   return (
+    <>
     <div className="container cardPrincipal">
       <Filter></Filter>
       <div className="row">
@@ -150,9 +151,12 @@ const CardProducto = () => {
         )
         )}
         <FooterEnvio></FooterEnvio>
-        <Footer></Footer>
-      </div>
+       
+      </div> 
+      
     </div>
+    <Footer></Footer>
+    </>
   );
 }
 

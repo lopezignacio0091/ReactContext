@@ -1,37 +1,23 @@
 import React from 'react';
 
-import {
-  CategoryProvider,
-  CategoryTitle,
-  CategoryItem,
-} from '@mui-treasury/components/menu/category';
-import {
-  SocialProvider,
-  SocialLink,
-} from '@mui-treasury/components/socialLink';
+import {CategoryProvider,CategoryTitle,CategoryItem} from '@mui-treasury/components/menu/category';
+import {SocialProvider, SocialLink} from '@mui-treasury/components/socialLink';
 import { useBallSocialLinkStyles } from '@mui-treasury/styles/socialLink/ball';
-
 import { useNikiCategoryMenuStyles } from '@mui-treasury/styles/categoryMenu/niki';
 import { ColumnToRow, Row, Item } from '@mui-treasury/components/flex';
-import {
-  EmailSubscribe,
-  EmailTextInput,
-  SubmitButton,
-} from '@mui-treasury/components/EmailSubscribe';
+import {EmailSubscribe,EmailTextInput,SubmitButton,} from '@mui-treasury/components/EmailSubscribe';
 import { useInfoEmailSubscribeStyles } from '@mui-treasury/styles/emailSubscribe/info';
 import ArrowForward from '@material-ui/icons/ArrowForward';
-
 import Box from '@material-ui/core/Box';
 import Divider from '@material-ui/core/Divider';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 
-//import { FontProvider, Font } from 'website/src/components/Font';
 
   const OceanAppFooterDemo = React.memo(function OceanAppFooter() {
   return (
    // <FontProvider fonts={[{ font: 'Oswald' }]}>
-      <Box width={'100%'} px={{ xs: 2, sm: 3, lg: 4 }} style={{marginTop:'100px'}}>
+      <Box width={'100%'} px={{ xs: 2, sm: 3, lg: 4 }} style={{marginTop:'100px',backgroundColor:"rgb(167, 163, 163)"}}>
         <Box pt={6} pb={{ md: 6 }}>
           <Grid container spacing={4}>
             <Grid item xs={12} md={4} lg={3}>
@@ -53,44 +39,44 @@ import Typography from '@material-ui/core/Typography';
             </Grid>
             <Grid item xs={12} md={8} lg={5}>
               <Grid container spacing={2}>
-                <Grid item xs={6} sm={4}>
+                <Grid item xs={6} sm={4}  style={{color:"rgb(232, 231, 231)"}}>
                   <CategoryProvider useStyles={useNikiCategoryMenuStyles}>
-                    <CategoryTitle>
+                    <CategoryTitle style={{color:"rgb(232, 231, 231)"}}>
                      {/* <Font>Products</Font> */}
                      Producto
                     </CategoryTitle>
-                    <CategoryItem>Snowflake Free</CategoryItem>
-                    <CategoryItem>Coloristic</CategoryItem>
-                    <CategoryItem>Summer free</CategoryItem>
-                    <CategoryItem>Lucky store</CategoryItem>
+                    <CategoryItem style={{color:"rgb(232, 231, 231)"}}>Snowflake Free</CategoryItem>
+                    <CategoryItem style={{color:"rgb(232, 231, 231)"}}>Coloristic</CategoryItem>
+                    <CategoryItem style={{color:"rgb(232, 231, 231)"}}>Summer free</CategoryItem>
+                    <CategoryItem style={{color:"rgb(232, 231, 231)"}}>Lucky store</CategoryItem>
                   </CategoryProvider>
                 </Grid>
                 <Grid item xs={6} sm={4}>
                   <CategoryProvider useStyles={useNikiCategoryMenuStyles}>
-                    <CategoryTitle>
+                    <CategoryTitle style={{color:"rgb(232, 231, 231)"}}>
                       {/* <Font>Information</Font> */}Informacion
                     </CategoryTitle>
-                    <CategoryItem>License</CategoryItem>
-                    <CategoryItem>Privacy Policy</CategoryItem>
-                    <CategoryItem>Releases</CategoryItem>
-                    <CategoryItem>FAQ</CategoryItem>
+                    <CategoryItem style={{color:"rgb(232, 231, 231)"}}>License</CategoryItem>
+                    <CategoryItem style={{color:"rgb(232, 231, 231)"}}>Privacy Policy</CategoryItem>
+                    <CategoryItem style={{color:"rgb(232, 231, 231)"}}>Releases</CategoryItem>
+                    <CategoryItem style={{color:"rgb(232, 231, 231)"}}>FAQ</CategoryItem>
                   </CategoryProvider>
                 </Grid>
                 <Grid item xs={6} sm={4}>
                   <CategoryProvider useStyles={useNikiCategoryMenuStyles}>
-                    <CategoryTitle>
+                    <CategoryTitle style={{color:"rgb(232, 231, 231)"}}>
                       {/* <Font>About</Font> */}About
                     </CategoryTitle>
-                    <CategoryItem>Contacto</CategoryItem>
-                    <CategoryItem>Equipo</CategoryItem>
-                    <CategoryItem>Soporte</CategoryItem>
+                    <CategoryItem style={{color:"rgb(232, 231, 231)"}}>Contacto</CategoryItem>
+                    <CategoryItem style={{color:"rgb(232, 231, 231)"}}>Equipo</CategoryItem>
+                    <CategoryItem style={{color:"rgb(232, 231, 231)"}}>Soporte</CategoryItem>
                   </CategoryProvider>
                 </Grid>
               </Grid>
             </Grid>
             <Grid item xs={12} md={8} lg={4} style={{ marginLeft: 'auto' }}>
               <CategoryProvider useStyles={useNikiCategoryMenuStyles}>
-                <CategoryTitle>
+                <CategoryTitle style={{color:"rgb(232, 231, 231)"}}>
                   {/* <Font>Subscribe</Font> */}Subscribirse
                 </CategoryTitle>
               </CategoryProvider>
@@ -119,6 +105,7 @@ import Typography from '@material-ui/core/Typography';
                 component={'p'}
                 variant={'caption'}
                 color={'textSecondary'}
+                style={{color:"rgb(232, 231, 231)"}}
               >
                Ciudad Evita -La Matanza
               </Typography>
@@ -130,6 +117,7 @@ import Typography from '@material-ui/core/Typography';
                 component={'p'}
                 variant={'caption'}
                 color={'textSecondary'}
+                style={{color:"rgb(232, 231, 231)"}}
               >
                 ©2020 All right reserved
               </Typography>
