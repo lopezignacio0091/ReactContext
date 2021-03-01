@@ -26,11 +26,13 @@ import FormHelperText from '@material-ui/core/FormHelperText';
 import Message from '../Message/LoginMessage'
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { IoMdContact } from "react-icons/io";
-
+import Footer from '../home/FooterHome/FooterHome'
 const useStyles = makeStyles((theme) => ({
     root: {
         maxWidth: 545,
         left: 750,
+        marginTop:'20%',
+        marginLeft:'20%'
     },
     expand: {
         transform: 'rotate(0deg)',
@@ -95,7 +97,9 @@ const Recovery = () => {
     }
 
     return (
-        <div className="text-center mt-5 ml-5" >
+        <>
+        <div className="container-fluid formulario" >
+            <Grid container spacing={3}>  
             <Card className={classes.root}
                 justify="center"
                 alignItems="center">
@@ -200,7 +204,10 @@ const Recovery = () => {
                     </Grid>
                 </CardActions>
             </Card>
+            </Grid>
         </div>
+        <Footer/>
+        </>
     )
 }
 export default Recovery

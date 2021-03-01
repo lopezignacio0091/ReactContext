@@ -40,6 +40,8 @@ const useStyles = makeStyles((theme) => ({
         width: 600,
         height: 500,
         flexDirection: 'column',
+        marginTop:'20%',
+        marginLeft:'20%'
     },
     container: {
         height: '100vh',
@@ -96,7 +98,7 @@ const Login = () => {
     return (
         <>
         <div className='container-fluid formulario'>  
-         <Grid container spacing={3}> 
+         <Grid container spacing={4}> 
             <Card className={classes.root}>
                 <Paper className={classes.header}><h2>
                     Bienvenido</h2><br>
